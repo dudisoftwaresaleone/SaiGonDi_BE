@@ -1,0 +1,2500 @@
+[{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aeeff"
+  },
+  "name": "Minh Thạnh",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.52395130568621,
+      11.452089401394414
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef00"
+  },
+  "name": "Dầu Tiếng",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.42597417470161,
+      11.387740935181188
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef01"
+  },
+  "name": "Long Hòa",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.50611744417783,
+      11.341129985063972
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef02"
+  },
+  "name": "Thanh An",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.42041923711595,
+      11.24453128431686
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef03"
+  },
+  "name": "Trừ Văn Thố",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.61190633040032,
+      11.368781791148924
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef04"
+  },
+  "name": "An Long",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.68871110533313,
+      11.379530301919628
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef05"
+  },
+  "name": "Phước Thành",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6956,
+      10.7764
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef06"
+  },
+  "name": "Xóm Chiếu",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6958,
+      10.7768
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef07"
+  },
+  "name": "Khánh Hội",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.696,
+      10.7769
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef08"
+  },
+  "name": "Vĩnh Hội",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6961,
+      10.777
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef09"
+  },
+  "name": "Chợ Quán",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6962,
+      10.7771
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef0a"
+  },
+  "name": "An Đông",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.67140294326322,
+      10.754945264789683
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef0b"
+  },
+  "name": "Chợ Lớn",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6964,
+      10.7773
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef0c"
+  },
+  "name": "Bình Tây",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6448660037666,
+      10.75130715743471
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef0d"
+  },
+  "name": "Bình Cơ",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.75183826227595,
+      11.151957147734947
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef0e"
+  },
+  "name": "Bình Phú",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.62793772051407,
+      10.738493860366816
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef0f"
+  },
+  "name": "Phú Lâm",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6968,
+      10.7777
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef10"
+  },
+  "name": "Tân Thuận",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6969,
+      10.7778
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef11"
+  },
+  "name": "Phú Thuận",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.697,
+      10.7779
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef12"
+  },
+  "name": "Tân Mỹ",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6971,
+      10.778
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef13"
+  },
+  "name": "Tân Hưng",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.70433951041497,
+      10.73914038292267
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef14"
+  },
+  "name": "Chánh Hưng",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.67687104794857,
+      10.74390063838915
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef15"
+  },
+  "name": "Phú Định",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.63059253819944,
+      10.727716325548485
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef16"
+  },
+  "name": "Bình Đông",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.62216894705801,
+      10.705987945219803
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef17"
+  },
+  "name": "Diên Hồng",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.66205961507961,
+      10.771027350363639
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef18"
+  },
+  "name": "Vườn Lài",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.67281185528009,
+      10.765874968096796
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef19"
+  },
+  "name": "Hòa Hưng",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.66868052370148,
+      10.77875267907416
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef1a"
+  },
+  "name": "Minh Phụng",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.64774266956937,
+      10.756424199662561
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef1b"
+  },
+  "name": "Bình Thới",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.64220229727238,
+      10.762607211515984
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef1c"
+  },
+  "name": "Hòa Bình",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.64595618759063,
+      10.770635994472542
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef1d"
+  },
+  "name": "Phú Thọ",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.65423253029758,
+      10.766026575064132
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef1e"
+  },
+  "name": "Đông Hưng Thuận",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.62241804609039,
+      10.838699250102664
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef1f"
+  },
+  "name": "Trung Mỹ Tây",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.62398674103048,
+      10.862470818358332
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef20"
+  },
+  "name": "Tân Thới Hiệp",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.64192611675293,
+      10.877154276227571
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef21"
+  },
+  "name": "Thới An",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.66459812561362,
+      10.878260957592317
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef22"
+  },
+  "name": "An Phú Đông",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.69562675224404,
+      10.86165441010965
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef23"
+  },
+  "name": "An Lạc",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.73964601721997,
+      10.786952257270315
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef24"
+  },
+  "name": "Bình Tân",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.59130166212452,
+      10.78871890636033
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef25"
+  },
+  "name": "Tân Tạo",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.58470100538233,
+      10.743830313257817
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef26"
+  },
+  "name": "Bình Trị Đông",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.60783669115966,
+      10.76926206560492
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef27"
+  },
+  "name": "Bình Hưng Hòa",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.60511335099585,
+      10.794550912938007
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef28"
+  },
+  "name": "Gia Định",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.69835601533617,
+      10.800589383153891
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef29"
+  },
+  "name": "Bình Thạnh",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.70370446166686,
+      10.809649257000132
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef2a"
+  },
+  "name": "Bình Lợi Trung",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.70044028825549,
+      10.820976524663791
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef2b"
+  },
+  "name": "Thạnh Mỹ Tây",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.71779565270981,
+      10.798803764825067
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef2c"
+  },
+  "name": "Bình Quới",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.73647030728341,
+      10.822044969632884
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef2d"
+  },
+  "name": "Hạnh Thông",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.68150031059321,
+      10.821300835405196
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef2e"
+  },
+  "name": "An Nhơn",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.68617420655727,
+      10.83743613853784
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef2f"
+  },
+  "name": "Gò Vấp",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.67431571569341,
+      10.836292081497902
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef30"
+  },
+  "name": "An Hội Đông",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.66609410680371,
+      10.848935748514208
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef31"
+  },
+  "name": "Thông Tây Hội",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.65443482152176,
+      10.842425887305097
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef32"
+  },
+  "name": "An Hội Tây",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.64495258487625,
+      10.848941958610354
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef34"
+  },
+  "name": "Cầu Kiệu",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6842340406792,
+      10.799171886020986
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef35"
+  },
+  "name": "Phú Nhuận",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.67361202149203,
+      10.794135785209193
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef36"
+  },
+  "name": "Tân Sơn Hòa",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.66343599243044,
+      10.797566254685435
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef37"
+  },
+  "name": "Tân Sơn Nhất",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.65736422518012,
+      10.793029852277058
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef38"
+  },
+  "name": "Tân Hòa",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.65369260422312,
+      10.780565012182038
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef39"
+  },
+  "name": "Bảy Hiền",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.64959817232022,
+      10.795192520962928
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef3a"
+  },
+  "name": "Tân Bình",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.64164108704466,
+      10.798691216925349
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef3b"
+  },
+  "name": "Tân Sơn",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.65072030115061,
+      10.823571063902804
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef3c"
+  },
+  "name": "Tây Thạnh",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.61977457483437,
+      10.813632193121748
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef3d"
+  },
+  "name": "Tân Sơn Nhì",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.62380484963239,
+      10.802075240269133
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef3e"
+  },
+  "name": "Phú Thọ Hòa",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.62693660826318,
+      10.789344290084514
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef3f"
+  },
+  "name": "Tân Phú",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.63860638969669,
+      10.776093000166696
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef40"
+  },
+  "name": "Phú Thạnh",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.62657613717772,
+      10.772897072106403
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef41"
+  },
+  "name": "Hiệp Bình",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.72249635551111,
+      10.844387288263817
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef42"
+  },
+  "name": "Thủ Đức",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.75744807559443,
+      10.840436651895388
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef43"
+  },
+  "name": "Tam Bình",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.73563911247169,
+      10.870248312080847
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef44"
+  },
+  "name": "Linh Xuân",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.77041946479346,
+      10.86904088889122
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef45"
+  },
+  "name": "Tăng Nhơn Phú",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.79576301252683,
+      10.840815101726918
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef46"
+  },
+  "name": "Long Bình",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.83197464928185,
+      10.860901462071482
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef47"
+  },
+  "name": "Long Phước",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.85881896188579,
+      10.80273837808079
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef48"
+  },
+  "name": "Long Trường",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.81053965997967,
+      10.794081491364409
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef49"
+  },
+  "name": "Cát Lái",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.77122653904888,
+      10.766564349576967
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef4a"
+  },
+  "name": "Bình Trưng",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.76325474316127,
+      10.79450876524136
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef4b"
+  },
+  "name": "Phước Long",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.77479465873722,
+      10.819440283180526
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef4c"
+  },
+  "name": "An Khánh",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.73964601721997,
+      10.786952257270315
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef4d"
+  },
+  "name": "Đông Hòa",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.80066070705965,
+      10.894756070879694
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef4e"
+  },
+  "name": "Đức Nhuận",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.67749863581344,
+      10.806782704450143
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef4f"
+  },
+  "name": "Dĩ An",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.75454968051213,
+      10.899996582592166
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef50"
+  },
+  "name": "Tân Đông Hiệp",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7620796318484,
+      10.94166590262411
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef51"
+  },
+  "name": "Thuận An",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.675991495804,
+      10.94032156983971
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef52"
+  },
+  "name": "Thuận Giao",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.71389644537004,
+      10.96384252825446
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef53"
+  },
+  "name": "Bình Hòa",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.72561198823917,
+      10.909879394346447
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef54"
+  },
+  "name": "Lái Thiêu",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.69852245984362,
+      10.910743215467491
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef55"
+  },
+  "name": "An Phú",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.73599914553324,
+      10.961222602175567
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef56"
+  },
+  "name": "Bình Dương",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.68461759598813,
+      11.050075716106562
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef57"
+  },
+  "name": "Chánh Hiệp",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.63894153179899,
+      11.011004461200628
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef58"
+  },
+  "name": "Hòa Lợi",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.65122417423186,
+      11.0793892308632
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef59"
+  },
+  "name": "Phú An",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.60175959975516,
+      11.054424615814028
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef5a"
+  },
+  "name": "Rạch Dừa",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      107.11284860298122,
+      10.386526910489323
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef5b"
+  },
+  "name": "Phước Thắng",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      107.16194900133257,
+      10.426709031411775
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef5c"
+  },
+  "name": "Bà Rịa",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      107.18163966125576,
+      10.492570555064205
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef5d"
+  },
+  "name": "Long Hương",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      107.14653433083635,
+      10.499242974436854
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef5e"
+  },
+  "name": "Tam Long",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      107.21649243905603,
+      10.525129239662249
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef5f"
+  },
+  "name": "Phú Mỹ",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      107.0463573847153,
+      10.614982009299695
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef60"
+  },
+  "name": "Tân Thành",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      107.13678730224501,
+      10.655029243791418
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef61"
+  },
+  "name": "Tân Phước",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      107.05262212565805,
+      10.525730649870809
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef62"
+  },
+  "name": "Tân Hải",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      107.10798358441798,
+      10.52003071084151
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef63"
+  },
+  "name": "Tân Khánh",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7453394510934,
+      11.001042279548741
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef64"
+  },
+  "name": "Tây Nam",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.51951844557067,
+      11.148508725368018
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef65"
+  },
+  "name": "Long Nguyên",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.5705882095188,
+      11.181529246073396
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef66"
+  },
+  "name": "Bến Cát",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.61354738341265,
+      11.204202441360437
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef67"
+  },
+  "name": "Chánh Phú Hòa",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6669369725796,
+      11.188458854410868
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef68"
+  },
+  "name": "Thới Hòa",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.62560531210897,
+      11.1037284834661
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef69"
+  },
+  "name": "Vĩnh Lộc",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.55330219687022,
+      10.82739312770407
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef6a"
+  },
+  "name": "Tân Vĩnh Lộc",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.55117225999288,
+      10.795353798451671
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef6b"
+  },
+  "name": "Bàn Cờ",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.68081028062653,
+      10.771465720967072
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef6c"
+  },
+  "name": "Bến Thành",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.69470752205262,
+      10.770878702024888
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef6d"
+  },
+  "name": "Bình Tiên",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.64192689828616,
+      10.742088415209821
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef6e"
+  },
+  "name": "Cầu Ông Lãnh",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.68934418601782,
+      10.761825981304526
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef71"
+  },
+  "name": "Long Sơn",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      107.10536087172642,
+      10.450839157940194
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef72"
+  },
+  "name": "Hòa Hiệp",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      107.5004743188507,
+      10.69877359339911
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef73"
+  },
+  "name": "Bình Châu",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      107.53597208003424,
+      10.60048964320714
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef74"
+  },
+  "name": "Thạnh An",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.97248947214979,
+      10.530952231070117
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef75"
+  },
+  "name": "Bình Hưng",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.65403819096656,
+      10.704887554039999
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef76"
+  },
+  "name": "An Thới Đông",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.8093219919648,
+      10.49725099769178
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef77"
+  },
+  "name": "Cần Giờ",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.90450483144679,
+      10.443576346001151
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef78"
+  },
+  "name": "Củ Chi",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7073,
+      10.7883
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef79"
+  },
+  "name": "Nhà Bè",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7074,
+      10.7884
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef7a"
+  },
+  "name": "Bà Điểm",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7075,
+      10.7885
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef7e"
+  },
+  "name": "Đông Thạnh",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7079,
+      10.7889
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef80"
+  },
+  "name": "Hiệp Phước",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7081,
+      10.7891
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef86"
+  },
+  "name": "An Nhơn Tây",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7087,
+      10.7897
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef89"
+  },
+  "name": "Bình Chánh",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.709,
+      10.79
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef8b"
+  },
+  "name": "Tân Nhựt",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7092,
+      10.7902
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef8e"
+  },
+  "name": "Bình Lợi",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7095,
+      10.7905
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef8f"
+  },
+  "name": "Ngãi Giao",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7096,
+      10.7906
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef90"
+  },
+  "name": "Kim Long",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7097,
+      10.7907
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef91"
+  },
+  "name": "Bình Giã",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7098,
+      10.7908
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef92"
+  },
+  "name": "Nghĩa Thành",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7099,
+      10.7909
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef93"
+  },
+  "name": "Xuân Sơn",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.71,
+      10.791
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef94"
+  },
+  "name": "Châu Đức",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7101,
+      10.7911
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef95"
+  },
+  "name": "Châu Pha",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7102,
+      10.7912
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef96"
+  },
+  "name": "Hồ Tràm",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7103,
+      10.7913
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef97"
+  },
+  "name": "Xuyên Mộc",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7104,
+      10.7914
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef98"
+  },
+  "name": "Hòa Hội",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7105,
+      10.7915
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef99"
+  },
+  "name": "Bàu Lâm",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7106,
+      10.7916
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef9a"
+  },
+  "name": "Đất Đỏ",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7107,
+      10.7917
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef9b"
+  },
+  "name": "Long Hải",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7108,
+      10.7918
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef9c"
+  },
+  "name": "Long Điền",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7109,
+      10.7919
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aef9e"
+  },
+  "name": "Phú Giáo",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7111,
+      10.7921
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c3897d1611b8e0f57aefa6"
+  },
+  "name": "Đặc khu Côn Đảo",
+  "type": "đặc khu",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.61239947542373,
+      8.705766816220894
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6923db1caecead1c6d3e8a36"
+  },
+  "name": "Bình Khánh",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.792015,
+      10.633069
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6923dd42aecead1c6d3e8a38"
+  },
+  "name": "Tân Uyên",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.761953,
+      11.043092
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "b00000000000000000000103"
+  },
+  "name": "Vĩnh Tân",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7086,
+      11.1264
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "b00000000000000000000104"
+  },
+  "name": "Thường Tân",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.87417,
+      11.04278
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a3f"
+  },
+  "name": "Tân Định",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6944598,
+      10.790563
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a40"
+  },
+  "name": "Xuân Hòa",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6895281,
+      10.7825113
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a41"
+  },
+  "name": "Nhiêu Lộc",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6750721,
+      10.7856371
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a42"
+  },
+  "name": "Thủ Dầu Một",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6537419,
+      10.9808621
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a43"
+  },
+  "name": "Phú Lợi",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.4761638,
+      11.1293828
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a46"
+  },
+  "name": "Tân Hiệp",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      108.5069704,
+      15.9578933
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a47"
+  },
+  "name": "Vũng Tàu",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      107.0744665,
+      10.3478994
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a48"
+  },
+  "name": "Tam Thắng",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      107.0833302,
+      10.3643528
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a49"
+  },
+  "name": "Hưng Long",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6388556,
+      10.6587154
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a4b"
+  },
+  "name": "Tân An Hội",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.4637699,
+      10.970179
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a4c"
+  },
+  "name": "Thái Mỹ",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.2148326,
+      21.3503789
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a4d"
+  },
+  "name": "Nhuận Đức",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.4762317,
+      11.0595848
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a4e"
+  },
+  "name": "Phú Hòa Đông",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.5562008,
+      10.9887911
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a4f"
+  },
+  "name": "Bình Mỹ",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.0081321,
+      20.4914206
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a50"
+  },
+  "name": "Hóc Môn",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.5927134,
+      10.8860463
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a51"
+  },
+  "name": "Xuân Thới Sơn",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.5569321,
+      10.887924
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a53"
+  },
+  "name": "Bắc Tân Uyên",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.7047005,
+      11.1560893
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a54"
+  },
+  "name": "Phước Hòa",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      109.1852254,
+      12.2366373
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a55"
+  },
+  "name": "Bàu Bàng",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.6212112,
+      11.2652062
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923f0dfaecead1c6d3e8a57"
+  },
+  "name": "Phước Hải",
+  "type": "xã",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      107.2921241,
+      10.4257988
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "6923ff39cf321541be6e3cab"
+  },
+  "name": "Sài Gòn",
+  "type": "phường",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      106.701628,
+      10.782679
+    ]
+  },
+  "__v": 0
+}]

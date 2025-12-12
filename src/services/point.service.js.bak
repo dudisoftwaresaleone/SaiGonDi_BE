@@ -1,0 +1,38 @@
+import UserModel from '../models/User.model'
+import PointHistoryModel from '../models/PointHistory.model'
+import mongoose from 'mongoose'
+
+const awardPoints = async (userId, action, points, meta = {}) => {
+  const session = await mongoose.startSession()
+  session.startTransaction()
+  try {
+    const user = await UserModel.findById(userId).session(session)
+    if (!user) {
+      throw new Error('User not found')
+    }
+
+    user.points += points
+    await user.save({ session })
+
+    const pointHistory = new PointHistoryModel({
+      userId,
+      action,
+      points,
+      meta
+    })
+    await pointHistory.save({ session })
+
+    await session.commitTransaction()
+    session.endSession()
+
+    return user
+  } catch (error) {
+    await session.abortTransaction()
+    session.endSession()
+    throw error
+  }
+}
+
+export default {
+  awardPoints
+}

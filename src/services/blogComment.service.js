@@ -1,0 +1,121 @@
+import BlogCommentModel from '~/models/BlogComment.model.js'
+import BlogModel from '~/models/Blog.model.js'
+import ApiError from '~/utils/ApiError.js'
+import { StatusCodes } from 'http-status-codes'
+import { userBadgeService } from './userBadge.service.js'
+
+const createComment = async (blogId, commentData, userId) => {
+  const blog = await BlogModel.findById(blogId)
+  if (!blog || blog.privacy !== 'public' || blog.status !== 'approved') {
+    throw new ApiError(StatusCodes.NOT_FOUND, 'Không tìm thấy bài viết hoặc bài viết không công khai.')
+  }
+
+  // 2. Tạo bình luận mới
+  const newComment = await BlogCommentModel.create({
+    ...commentData,
+    blogId: blogId,
+    userId: userId
+  })
+
+  const populatedComment = await BlogCommentModel.findById(newComment._id)
+    .populate({ path: 'userId', select: 'firstName lastName avatar', match: { banned: false, _destroyed: false } })
+    .exec()
+
+  // Trigger badge action
+  userBadgeService.handleUserAction(userId, 'comment', { blogId, commentId: newComment._id })
+
+  return populatedComment
+}
+
+const getCommentsByBlog = async (blogId, queryParams) => {
+  const page = parseInt(queryParams.page, 10) || 1
+  const limit = parseInt(queryParams.limit, 5) || 5
+
+  const query = { blogId }
+
+  const allComments  = await BlogCommentModel.find(query)
+    .populate({
+      path: 'userId',
+      select: 'firstName lastName avatar',
+      match: { banned: false, _destroyed: false }
+    })
+    .lean()
+    .sort({ createdAt: -1 })
+  
+  const validComments = allComments.filter(comment => comment.userId !== null)
+  const total = validComments.length
+  const totalPages = Math.ceil(total / limit)
+
+  const startIndex = (page - 1) * limit
+  const comments = validComments.slice(startIndex, startIndex + limit) 
+  return {
+    comments,
+    pagination: {
+      total,
+      limit,
+      currentPage: page,
+      totalPages
+    }
+  }
+}
+
+const updateComment = async (commentId, userId, updateData) => {
+  const comment = await BlogCommentModel.findById(commentId)
+  if (!comment) throw new ApiError(StatusCodes.NOT_FOUND, 'Không tìm thấy bình luận.')
+
+  if (comment.userId.toString() !== userId.toString()) {
+    throw new ApiError(StatusCodes.FORBIDDEN, 'Bạn không có quyền sửa bình luận này.')
+  }
+
+  comment.comment = updateData.comment ?? comment.comment
+  comment.images = updateData.images ?? comment.images
+
+  await comment.save()
+  await comment.populate('userId', 'firstName lastName avatar') 
+  return comment
+}
+
+const deleteComment = async (commentId, user) => {
+  const comment = await BlogCommentModel.findById(commentId)
+
+  if (!comment) {
+    throw new ApiError(StatusCodes.NOT_FOUND, 'Không tìm thấy bình luận.')
+  }
+
+  const isAuthor = comment.userId.toString() === user.id.toString()
+  const isAdmin = user.role === 'admin'
+
+  if (!isAuthor && !isAdmin) {
+    throw new ApiError(StatusCodes.FORBIDDEN, 'Bạn không có quyền xoá bình luận này.')
+  }
+
+  await comment.deleteOne()
+}
+
+
+const likeComment = async (commentId, userId) => {
+  const comment = await BlogCommentModel.findById(commentId)
+  if (!comment) throw new ApiError(StatusCodes.NOT_FOUND, 'Không tìm thấy bình luận.')
+
+  const userIndex = comment.likeBy.findIndex((id) => id.toString() === userId.toString())
+
+  if (userIndex === -1) {
+    comment.likeBy.push(userId)
+    // Trigger badge action
+    userBadgeService.handleUserAction(userId, 'like_comment', { commentId })
+  } else {
+    comment.likeBy.splice(userIndex, 1)
+  }
+
+  comment.totalLikes = comment.likeBy.length
+  await comment.save()
+  return comment
+}
+
+export const blogCommentService = {
+  createComment,
+  getCommentsByBlog,
+  updateComment,
+  deleteComment,
+  likeComment
+}
