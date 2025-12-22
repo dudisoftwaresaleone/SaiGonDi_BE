@@ -17,7 +17,7 @@ const START_SERVER = async () => {
 
   app.use(
     cors({
-      origin: env.CLIENT_URL || 'https://sai-gon-di-web.vercel.app',
+      origin: env.CLIENT_URL || 'https://sai-gon-di-web-nu.vercel.app',
       credentials: true,
     })
   )
