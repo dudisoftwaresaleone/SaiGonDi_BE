@@ -1,16 +1,14 @@
 import passport from 'passport'
 import { Strategy as FacebookStrategy } from 'passport-facebook'
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
-import dotenv from 'dotenv'
+import { env } from '~/config/environment.js'
 import User from '../models/User.model.js'
-
-dotenv.config()
 
 // === FACEBOOK STRATEGY ===
 passport.use(new FacebookStrategy({
-  clientID: process.env.FACEBOOK_APP_ID,
-  clientSecret: process.env.FACEBOOK_APP_SECRET,
-  callbackURL: process.env.FACEBOOK_CALLBACK,
+  clientID: env.FACEBOOK_APP_ID,
+  clientSecret: env.FACEBOOK_APP_SECRET,
+  callbackURL: env.FACEBOOK_CALLBACK,
   profileFields: ['id', 'displayName', 'emails', 'name']
 }, async (accessToken, refreshToken, profile, done) => {
   try {
@@ -54,9 +52,9 @@ passport.use(new FacebookStrategy({
 
 // === GOOGLE STRATEGY ===
 passport.use(new GoogleStrategy({
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: process.env.GOOGLE_CALLBACK
+  clientID: env.GOOGLE_CLIENT_ID,
+  clientSecret: env.GOOGLE_CLIENT_SECRET,
+  callbackURL: env.GOOGLE_CALLBACK
 }, async (accessToken, refreshToken, profile, done) => {
   try {
     const email = profile.emails?.[0]?.value;

@@ -9,7 +9,7 @@ import { uploadPlaceImages } from '~/middlewares/cloudinary.middleware.js'
 const Router = express.Router()
 
 Router.get('/search', placeValidation.searchValidate, placeController.searchPlaces)
-Router.get('/nearby', verifyToken, placeValidation.nearbyPlaces, placeController.getNearbyPlaces)
+Router.get('/nearby', placeValidation.nearbyPlaces, placeController.getNearbyPlaces)
 Router.post('/suggest', verifyToken, uploadFiles.array('images', 10), uploadPlaceImages, placeValidation.createNew, placeController.createNew)
 Router.get('/', placeValidation.pagingValidate, placeController.getApprovedPlaces)
 Router.get('/messages', placeController.getPlaceMessages)
