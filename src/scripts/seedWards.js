@@ -1,8 +1,17 @@
-const mongoose = require('mongoose')
-const fs = require('fs')
-const path = require('path')
-const Ward = require('../models/Ward.model.js')
-const db = require('../config/db.js')
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import dns from 'dns'
+dns.setServers(['8.8.8.8', '8.8.4.4'])
+dns.setDefaultResultOrder('ipv4first')
+
+// Dynamic imports
+const Ward = (await import('../models/Ward.model.js')).default
+const { connectDB } = await import('../config/db.js')
+const mongoose = (await import('mongoose')).default
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const wardsPath = path.join(__dirname, '..', 'data', 'wards.json')
 let wards = JSON.parse(fs.readFileSync(wardsPath, 'utf-8'))
@@ -25,13 +34,14 @@ wards = wards.map(ward => {
 
 const seedWards = async () => {
   try {
-    await db.connectDB()
-    await Ward.default.deleteMany({})
+    await connectDB()
+    await Ward.deleteMany({})
 
-    const result = await Ward.default.insertMany(wards)
+    const result = await Ward.insertMany(wards)
+    console.log('Wards seeded successfully.')
     return result
   } catch (error) {
-    throw new Error(`Error seeding wards: ${error.message}`)
+    console.error(`Error seeding wards: ${error.message}`)
   } finally {
     mongoose.disconnect()
   }

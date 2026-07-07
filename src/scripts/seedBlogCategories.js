@@ -1,9 +1,14 @@
-const mongoose = require('mongoose');
-const db = require('../config/db.js');
-const Category = require('../models/Category.model.js');
+import dns from 'dns'
+dns.setServers(['8.8.8.8', '8.8.4.4'])
+dns.setDefaultResultOrder('ipv4first')
+
+// Dynamic imports
+const { connectDB } = await import('../config/db.js')
+const Category = (await import('../models/Category.model.js')).default
+const mongoose = (await import('mongoose')).default
 
 const blogCategories = [
-  { name: 'Lịc  h trình', description: 'Các bài viết liên quan đến các lịch trình tại Sài Gòn.', type: 'blog' },
+  { name: 'Lịch trình', description: 'Các bài viết liên quan đến các lịch trình tại Sài Gòn.', type: 'blog' },
   { name: 'Kinh nghiệm', description: 'Chia sẻ mẹo hữu ích, kinh nghiệm đi lại, ăn uống và vui chơi tại Sài Gòn.',type: 'blog' },
   { name: 'Sự kiện', description: 'Khám phá những sự kiện tại Sài Gòn',type: 'blog' },
   { name: 'Ảnh đẹp', description: 'Ảnh đẹp, vui chơi tại Sài Gòn',type: 'blog' },
@@ -19,19 +24,20 @@ const blogCategories = [
   { name: 'Khách sạn và lưu trú', description: 'Tìm hiểu về các khách sạn và nơi lưu trú tốt nhất.',type: 'place' },
   { name: 'Ẩm thực đường phố', description: 'Khám phá các món ăn đường phố đặc sắc.',type: 'place' },
   { name: 'Quán cà phê và trà', description: 'Tìm hiểu về các quán cà phê và trà nổi tiếng.',type: 'place' }
-
 ];
 
 const seedBlogCategories = async () => {
   try {
-    await db.connectDB();
-    const result = await Category.default.insertMany(blogCategories);
-    return result;
+    await connectDB()
+    await Category.deleteMany({})
+    const result = await Category.insertMany(blogCategories)
+    console.log('Blog categories seeded successfully.')
+    return result
   } catch (error) {
-    throw new Error(`Error seeding blog categories: ${error.message}`);
+    console.error(`Error seeding blog categories: ${error.message}`)
   } finally {
-    mongoose.disconnect();
+    mongoose.disconnect()
   }
 };
 
-seedBlogCategories();
+seedBlogCategories()

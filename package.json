@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node --experimental-loader ./alias-loader.mjs src/app.js",
-    "dev": "nodemon --loader ./alias-loader.mjs src/app.js",
+    "dev": "nodemon --no-warnings --loader ./alias-loader.mjs src/app.js",
     "seed:badges": "babel-node ./src/scripts/seedBadges.js"
   },
   "keywords": [],

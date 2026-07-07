@@ -1,6 +1,11 @@
-import Badge from '~/models/Badge.model.js';
-import { connectDB } from '~/config/db.js';
-import mongoose from 'mongoose';
+import dns from 'dns'
+dns.setServers(['8.8.8.8', '8.8.4.4'])
+dns.setDefaultResultOrder('ipv4first')
+
+// Sử dụng dynamic import để đảm bảo DNS config được chạy trước khi load mongoose
+const Badge = (await import('../models/Badge.model.js')).default
+const { connectDB } = await import('../config/db.js')
+const mongoose = (await import('mongoose')).default
 
 const badges = [
   {

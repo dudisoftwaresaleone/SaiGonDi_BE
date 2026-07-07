@@ -15,7 +15,6 @@ const searchLogSchema = new mongoose.Schema({
 })
 
 searchLogSchema.index({ keyword: 1 })
-searchLogSchema.index({ createdAt: 1 })
 
 
 const SearchLogModel = mongoose.model('SearchLog', searchLogSchema)
