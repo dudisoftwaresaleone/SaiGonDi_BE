@@ -1,7 +1,6 @@
 import dns from 'dns'
 dns.setServers(['8.8.8.8', '8.8.4.4'])
 dns.setDefaultResultOrder('ipv4first')
-
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
