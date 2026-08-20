@@ -35,34 +35,13 @@ Router.get('/badges/history', verifyToken, userBadgeController.getPointHistory)
 Router.get('/categories', categoryController.getAllCategories)
 
 
-// Route for Facebook login
-Router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'], session: false }))
-Router.get(
-  '/auth/facebook/callback',
-  (req, res, next) => {
-    // Check for OAuth errors before Passport processes
-    if (req.query.error) {
-      const clientUrl = process.env.CLIENT_URL || 'http://localhost:3000';
-      const script = `
-        <script>
-          (function(){
-            var client = ${JSON.stringify(clientUrl)};
-            if (window.opener && !window.opener.closed) {
-              window.opener.postMessage({ error: ${JSON.stringify(req.query.error)} }, client);
-              window.close();
-              return;
-            }
-            window.location.href = client + '/auth/login';
-          })();
-        </script>
-      `;
-      return res.send(script);
-    }
-    next();
-  },
-  passport.authenticate('facebook', { session: false }),
-  userController.oAuthLoginCallback
-)
+// Route for Facebook login (Disabled - Under development)
+Router.get('/auth/facebook', (req, res) => {
+  res.status(200).json({ success: false, message: 'Tính năng đăng nhập bằng Facebook đang được phát triển.' })
+})
+Router.get('/auth/facebook/callback', (req, res) => {
+  res.status(200).json({ success: false, message: 'Tính năng đăng nhập bằng Facebook đang được phát triển.' })
+})
 // Google login
 Router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'], session: false }))
 Router.get(

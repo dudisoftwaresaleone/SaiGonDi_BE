@@ -1,4 +1,2 @@
-import twilio from 'twilio'
-import { env } from './environment.js'
-
-export const twilioClient = twilio(env.TWILIO_ACCOUNT_SID, env.TWILIO_AUTH_TOKEN)
+// Twilio disabled - Feature under development
+export const twilioClient = null
