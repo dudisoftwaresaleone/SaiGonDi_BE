@@ -76,6 +76,8 @@ const register = async (userData) => {
         "Đăng ký thành công. Vui lòng kiểm tra email của bạn để lấy mã OTP xác minh tài khoản.",
     };
   } catch (error) {
+    console.error("[REGISTER] Real error:", error.message || error);
+    console.error("[REGISTER] Stack:", error.stack);
     if (error instanceof ApiError) throw error;
     throw new ApiError(
       StatusCodes.INTERNAL_SERVER_ERROR,

@@ -12,8 +12,8 @@ import ApiError from '~/utils/ApiError.js'
  * @param {string} [sourceId] - ID của đối tượng liên quan (vd: ID của blog, place)
  */
 const handleUserAction = async (userId, actionType, sourceId) => {
-  // Use require here to avoid circular dependency issues at module load time
-  const { badgeActionService } = require('./badgeAction.service.js')
+  // Use dynamic import here to avoid circular dependency issues at module load time
+  const { badgeActionService } = await import('./badgeAction.service.js')
 
   try {
     // The meta object in badgeActionService is flexible

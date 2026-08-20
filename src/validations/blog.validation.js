@@ -50,6 +50,84 @@ const contentSchema = Joi.array().items(
 // Helper validate chung
 const validateBody = (schema) => async (req, res, next) => {
   try {
+    if (req.body) {
+      // Reconstruct content if sent as bracket notation (content[0][type], content[0][value], etc.)
+      if (!req.body.content) {
+        const contentItems = []
+        let index = 0
+        while (req.body[`content[${index}][type]`]) {
+          const item = {
+            type: req.body[`content[${index}][type]`]
+          }
+          if (req.body[`content[${index}][value]`]) item.value = req.body[`content[${index}][value]`]
+          if (req.body[`content[${index}][url]`]) item.url = req.body[`content[${index}][url]`]
+          if (req.body[`content[${index}][caption]`]) item.caption = req.body[`content[${index}][caption]`]
+          contentItems.push(item)
+
+          delete req.body[`content[${index}][type]`]
+          delete req.body[`content[${index}][value]`]
+          delete req.body[`content[${index}][url]`]
+          delete req.body[`content[${index}][caption]`]
+          index++
+        }
+        if (contentItems.length > 0) {
+          req.body.content = contentItems
+        }
+      }
+
+      if (typeof req.body.content === 'string') {
+        try {
+          req.body.content = JSON.parse(req.body.content)
+        } catch {
+          // Keep original string if parsing fails
+        }
+      }
+
+      // Reconstruct categories if sent as bracket notation (categories[0], etc.)
+      if (!req.body.categories) {
+        const catItems = []
+        let index = 0
+        while (req.body[`categories[${index}]`]) {
+          catItems.push(req.body[`categories[${index}]`])
+          delete req.body[`categories[${index}]`]
+          index++
+        }
+        if (catItems.length > 0) {
+          req.body.categories = catItems
+        }
+      }
+
+      if (typeof req.body.categories === 'string') {
+        try {
+          req.body.categories = JSON.parse(req.body.categories)
+        } catch {
+          req.body.categories = req.body.categories.split(',').map(id => id.trim()).filter(Boolean)
+        }
+      }
+
+      // Reconstruct tags if sent as bracket notation (tags[0], etc.)
+      if (!req.body.tags) {
+        const tagItems = []
+        let index = 0
+        while (req.body[`tags[${index}]`]) {
+          tagItems.push(req.body[`tags[${index}]`])
+          delete req.body[`tags[${index}]`]
+          index++
+        }
+        if (tagItems.length > 0) {
+          req.body.tags = tagItems
+        }
+      }
+
+      if (typeof req.body.tags === 'string') {
+        try {
+          req.body.tags = JSON.parse(req.body.tags)
+        } catch {
+          req.body.tags = req.body.tags.split(',').map(tag => tag.trim()).filter(Boolean)
+        }
+      }
+    }
+
     await schema.validateAsync(req.body, { abortEarly: false })
     next()
   } catch (error) {

@@ -137,9 +137,17 @@ const createBlog = async (req, res, next) => {
       content: mergedContent
     };
 
-    // Xử lý category
+    // Xử lý category và tags
     if (typeof blogData.categories === 'string') {
-      blogData.categories = blogData.categories.split(',').map(id => id.trim());
+      blogData.categories = blogData.categories.split(',').map(id => id.trim()).filter(Boolean);
+    } else if (blogData.categories && !Array.isArray(blogData.categories)) {
+      blogData.categories = Object.values(blogData.categories);
+    }
+
+    if (typeof blogData.tags === 'string') {
+      blogData.tags = blogData.tags.split(',').map(t => t.trim()).filter(Boolean);
+    } else if (blogData.tags && !Array.isArray(blogData.tags)) {
+      blogData.tags = Object.values(blogData.tags);
     }
 
     const newBlog = await blogService.createBlog(blogData, req.user.id);
