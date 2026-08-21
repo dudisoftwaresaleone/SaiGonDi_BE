@@ -2,6 +2,22 @@ import { StatusCodes } from "http-status-codes";
 import { userService } from "~/services/user.service.js";
 import UserModel from "~/models/User.model.js";
 
+/**
+ * Helper: generate cookie options that work for both local dev and cross-domain production.
+ * In production the frontend (Vercel) and backend live on different domains, so we
+ * MUST use sameSite: "None" + secure: true to allow cross-site cookies.
+ */
+const getCookieOptions = (maxAge) => {
+  const isProd = process.env.NODE_ENV === "production" || process.env.BUILD_MODE === "production";
+  return {
+    httpOnly: true,
+    secure: isProd,               // HTTPS-only in production
+    sameSite: isProd ? "None" : "Strict", // cross-site allowed in prod
+    path: "/",
+    ...(maxAge != null && { maxAge }),
+  };
+};
+
 const register = async (req, res, next) => {
   try {
     const result = await userService.register(req.body);
@@ -96,21 +112,8 @@ const logout = async (req, res, next) => {
   try {
     const userId = req.user?.id;
     if (userId) await userService.revokeRefreshToken(userId);
-    const isProd = process.env.NODE_ENV === "production";
-    res.clearCookie("session", {
-      httpOnly: true,
-      secure: isProd,
-      domain: "localhost",
-      sameSite: "Strict",
-      path: "/",
-    });
-    res.clearCookie("refreshToken", {
-      httpOnly: true,
-      domain: "localhost",
-      path: "/",
-      sameSite: "Strict",
-      secure: isProd,
-    });
+    res.clearCookie("session", getCookieOptions());
+    res.clearCookie("refreshToken", getCookieOptions());
     res.status(StatusCodes.OK).json({
       success: true,
       message: "Đăng xuất thành công",
@@ -130,13 +133,7 @@ const requestToken = async (req, res, next) => {
         .json({ success: false, message: "Refresh token is required" });
     const newToken = await userService.requestToken({ refreshToken });
     // Set new access token in HttpOnly cookie as well
-    const isProd = process.env.NODE_ENV === "production";
-    res.cookie("session", newToken, {
-      httpOnly: true,
-      secure: isProd,
-      sameSite: "Strict",
-      maxAge: 24 * 60 * 60 * 1000,
-    });
+    res.cookie("session", newToken, getCookieOptions(24 * 60 * 60 * 1000));
     res.status(StatusCodes.OK).json({
       success: true,
       accessToken: newToken,
@@ -326,21 +323,10 @@ const oAuthLoginCallback = async (req, res, next) => {
       );
 
     // Set HttpOnly cookies for access and refresh tokens (do not expose tokens via URL)
-    const isProd = process.env.NODE_ENV === "production";
     // Session cookie (short-lived access token)
-    res.cookie("session", accessToken, {
-      httpOnly: true,
-      secure: isProd,
-      sameSite: "Strict",
-      maxAge: 24 * 60 * 60 * 1000, // 1 day as requested
-    });
+    res.cookie("session", accessToken, getCookieOptions(24 * 60 * 60 * 1000));
     // Refresh token cookie (longer-lived)
-    res.cookie("refreshToken", refreshToken, {
-      httpOnly: true,
-      secure: isProd,
-      sameSite: "Strict",
-      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-    });
+    res.cookie("refreshToken", refreshToken, getCookieOptions(30 * 24 * 60 * 60 * 1000));
 
     // Notify opener only about success (no tokens in URL)
     const script = `
