@@ -30,6 +30,15 @@ const START_SERVER = async () => {
   app.use(express.urlencoded({ extended: true }))
   app.use(passport.initialize())
 
+  // Health check endpoint
+  app.get('/health', (req, res) => {
+    res.status(200).json({
+      status: 'OK',
+      uptime: process.uptime(),
+      timestamp: new Date().toISOString()
+    })
+  })
+
   app.use('/api', APIs)
   app.use(errorHandler)
 
