@@ -7,7 +7,8 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import mongoose from 'mongoose'
 import slugify from 'slugify'
-import { placeImages, localizeBlogImages } from '../utils/localImages.js'
+import { placeImages } from '../utils/localImages.js'
+import { blogArticles } from '../data/blogArticles.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -1341,7 +1342,8 @@ const seedRealisticData = async () => {
     // 1. Blogs
     const createdBlogs = []
     for (let bIndex = 0; bIndex < rawBlogsData.length; bIndex++) {
-      const b = rawBlogsData[bIndex]
+      // bài viết đầy đủ (src/data/blogArticles.js) thay cho nội dung mẫu ngắn; giữ lượt xem/ward của bản mẫu
+      const b = { ...rawBlogsData[bIndex], ...blogArticles[bIndex] }
       const catId = categoryMap[b.categoryName] || createdCategories[0]._id
       const author = createdUsers[(bIndex + 1) % createdUsers.length]
       const assignedWardId = wardMap[b.wardName] || defaultWard._id
@@ -1351,8 +1353,8 @@ const seedRealisticData = async () => {
       const blogDoc = await Blog.create({
         title: b.title,
         slug: createSlug(b.title),
-        mainImage: localizeBlogImages(b.title, b.mainImage),
-        content: localizeBlogImages(b.title, b.content),
+        mainImage: b.mainImage,
+        content: b.content,
         categories: [catId],
         tags: b.tags,
         privacy: 'public',

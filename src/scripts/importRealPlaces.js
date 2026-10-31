@@ -36,7 +36,8 @@ const ALREADY_SEEDED = new Set([
   'Q15265989', 'Q10743440', 'Q3162430', 'Q6121304', 'Q1949129', 'Q638512', 'Q31994680', 'Q56193221', 'Q56193845'
 ])
 
-await mongoose.connect(process.env.MONGODB_URI, { dbName: process.env.DATABASE_NAME })
+// TARGET_DB=SaiGonGo để nạp vào DB khác (mặc định DATABASE_NAME)
+await mongoose.connect(process.env.MONGODB_URI, { dbName: process.env.TARGET_DB || process.env.DATABASE_NAME })
 
 const admin = await User.findOne({ role: 'admin' })
 if (!admin) throw new Error('Không tìm thấy tài khoản admin để gán createdBy')
