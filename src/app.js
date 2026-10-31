@@ -18,6 +18,10 @@ const APP_HOST = env.APP_HOST || '0.0.0.0' // FIX QUAN TRỌNG
 const START_SERVER = async () => {
   const app = express()
 
+  // Behind a reverse proxy (hosting platform): trust the first proxy so req.ip
+  // and express-rate-limit use the real client IP from X-Forwarded-For
+  app.set('trust proxy', 1)
+
   app.use(
     cors({
       origin: env.CLIENT_URL || 'https://sai-gon-di-web-nu.vercel.app',
