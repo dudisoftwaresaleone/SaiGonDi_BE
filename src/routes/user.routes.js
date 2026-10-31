@@ -49,7 +49,7 @@ Router.get(
   (req, res, next) => {
     // Check for OAuth errors before Passport processes
     if (req.query.error) {
-      const clientUrl = process.env.CLIENT_URL || 'http://localhost:3000';
+      const clientUrl = (process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',')[0].trim() : 'https://www.saigondi.io.vn');
       const script = `
         <script>
           (function(){

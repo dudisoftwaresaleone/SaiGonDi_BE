@@ -9,6 +9,7 @@ import WardModel from '~/models/Ward.model.js'
 
 import { OBJECT_ID_RULE } from '~/utils/validators.js'
 import CategoryModel from '~/models/Category.model.js'
+import ServiceModel from '~/models/Service.model.js'
 import { userBadgeService } from './userBadge.service.js'
 import { errorHandler } from '~/middlewares/error.middleware.js'
 

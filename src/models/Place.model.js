@@ -1,6 +1,9 @@
 import Joi from 'joi'
 import mongoose, { mongo } from 'mongoose'
 import slugify from 'slugify'
+import './Service.model.js'
+import './Category.model.js'
+import './Ward.model.js'
 
 const placeSchema = new mongoose.Schema({
   name: {

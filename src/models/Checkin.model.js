@@ -6,10 +6,15 @@ const checkinSchema = new mongoose.Schema({
     ref: 'users',
     required: true
   },
+  placeId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'places',
+    required: false
+  },
   wardId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'wards',
-    required: true
+    required: false
   },
   note: {
     type: String,
@@ -17,7 +22,7 @@ const checkinSchema = new mongoose.Schema({
     maxlength: 500,
     default: ''
   },
-  imgList:{
+  imgList: {
     type: [String],
     default: []
   },

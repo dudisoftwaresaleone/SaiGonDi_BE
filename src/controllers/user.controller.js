@@ -296,7 +296,7 @@ const getOutstandingBloggers = async (req, res, next) => {
 
 const oAuthLoginCallback = async (req, res, next) => {
   try {
-    const clientUrl = process.env.CLIENT_URL || "http://localhost:3000";
+    const clientUrl = (process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',')[0].trim() : 'https://www.saigondi.io.vn');
 
     if (!req.user) {
       const script = `
@@ -350,7 +350,7 @@ const oAuthLoginCallback = async (req, res, next) => {
     res.send(script);
   } catch (error) {
     console.error("OAuth callback error:", error);
-    const client = process.env.CLIENT_URL || "http://localhost:3000";
+    const client = (process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',')[0].trim() : 'https://www.saigondi.io.vn');
     const script = `
       <script>
         (function(){

@@ -22,9 +22,28 @@ const START_SERVER = async () => {
   // and express-rate-limit use the real client IP from X-Forwarded-For
   app.set('trust proxy', 1)
 
+  const allowedOrigins = [
+    'https://www.saigondi.io.vn',
+    'https://saigondi.io.vn',
+    'https://saigondi.vercel.app',
+    'https://sai-gon-di-web-nu.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:5173'
+  ]
+  if (env.CLIENT_URL) {
+    env.CLIENT_URL.split(',').map(s => s.trim()).filter(Boolean).forEach(url => {
+      if (!allowedOrigins.includes(url)) allowedOrigins.push(url)
+    })
+  }
+
   app.use(
     cors({
-      origin: env.CLIENT_URL || 'https://sai-gon-di-web-nu.vercel.app',
+      origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+          return callback(null, true)
+        }
+        return callback(null, true)
+      },
       credentials: true,
     })
   )
