@@ -131,25 +131,27 @@ const getApprovedPlaces = async (queryParams) => {
     }
 
 
-    const places = await PlaceModel.find(matchConditions)
-      .populate({
-        path: 'categories',
-        select: 'name icon _id'
-      })
-      .populate({
-        path: 'services',
-        select: 'name description _id'
-      })
-      .populate({
-        path: 'ward',
-        select: 'name'
-      })
-      .sort({ [sortByMapping[sortBy] || 'rating']: sortOrder })
-      .skip(startIndex)
-      .limit(limit)
-      .select('name slug address avgRating images services categories ward viewCount createdAt totalRatings')
-
-    const total = await PlaceModel.countDocuments(matchConditions)
+    // find + count chạy song song thay vì tuần tự
+    const [places, total] = await Promise.all([
+      PlaceModel.find(matchConditions)
+        .populate({
+          path: 'categories',
+          select: 'name icon _id'
+        })
+        .populate({
+          path: 'services',
+          select: 'name description _id'
+        })
+        .populate({
+          path: 'ward',
+          select: 'name'
+        })
+        .sort({ [sortByMapping[sortBy] || 'avgRating']: sortOrder })
+        .skip(startIndex)
+        .limit(limit)
+        .select('name slug address avgRating images services categories ward viewCount createdAt totalRatings'),
+      PlaceModel.countDocuments(matchConditions)
+    ])
 
     return {
       places,

@@ -183,6 +183,12 @@ placeSchema.pre('save', async function (next) {
 })
 
 placeSchema.index({ location: '2dsphere' })
+// Các truy vấn danh sách (lọc status + sắp xếp) và lọc theo danh mục / phường
+placeSchema.index({ status: 1, avgRating: -1 })
+placeSchema.index({ status: 1, viewCount: -1 })
+placeSchema.index({ status: 1, createdAt: -1 })
+placeSchema.index({ categories: 1 })
+placeSchema.index({ ward: 1 })
 
 placeSchema.methods.updateTotalLikes = async function () {
   this.totalLikes = this.likeBy.length

@@ -54,6 +54,10 @@ const checkinSchema = new mongoose.Schema({
   }
 })
 
+// Điểm đến hot: lọc theo tháng + gom theo placeId; lịch sử check-in theo user
+checkinSchema.index({ createdAt: -1, placeId: 1 })
+checkinSchema.index({ userId: 1, createdAt: -1 })
+
 const Checkin = mongoose.model('Checkin', checkinSchema)
 
 export default Checkin

@@ -7,6 +7,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import mongoose from 'mongoose'
 import slugify from 'slugify'
+import { placeImages, localizeBlogImages } from '../utils/localImages.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -1273,7 +1274,8 @@ const seedRealisticData = async () => {
           type: 'Point',
           coordinates: p.coordinates
         },
-        images: p.images,
+        // ảnh thật đã tải về FE (public/images/places); chưa có ảnh thật thì để trống -> FE hiện placeholder
+        images: placeImages[createSlug(p.name)] ?? [],
         status: 'approved',
         avgRating: 4.8,
         totalRatings: 0,
@@ -1349,8 +1351,8 @@ const seedRealisticData = async () => {
       const blogDoc = await Blog.create({
         title: b.title,
         slug: createSlug(b.title),
-        mainImage: b.mainImage,
-        content: b.content,
+        mainImage: localizeBlogImages(b.title, b.mainImage),
+        content: localizeBlogImages(b.title, b.content),
         categories: [catId],
         tags: b.tags,
         privacy: 'public',

@@ -151,6 +151,9 @@ const blogSchema = new mongoose.Schema(
 blogSchema.index({ tags: 1 })
 blogSchema.index({ categories: 1 })
 
+blogSchema.index({ status: 1, privacy: 1, createdAt: -1 })
+blogSchema.index({ viewCount: -1 })
+
 const BlogModel = mongoose.model('blogs', blogSchema)
 mongoose.model('Blog', blogSchema)
 export default BlogModel

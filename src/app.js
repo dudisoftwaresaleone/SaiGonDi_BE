@@ -4,6 +4,7 @@ dns.setServers(['8.8.8.8', '8.8.4.4'])
 dns.setDefaultResultOrder('ipv4first')
 import express from 'express'
 import cors from 'cors'
+import compression from 'compression'
 import cookieParser from 'cookie-parser'
 import passport from 'passport'
 import '~/config/passport.js'
@@ -48,6 +49,8 @@ const START_SERVER = async () => {
     })
   )
 
+  // Nén gzip/br response JSON (giảm mạnh dung lượng danh sách địa điểm/blog)
+  app.use(compression())
   app.use(cookieParser())
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))

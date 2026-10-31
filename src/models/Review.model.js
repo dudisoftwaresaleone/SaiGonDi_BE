@@ -79,6 +79,8 @@ reviewSchema.methods.updatePlaceAvgRating = async function () {
   }
 }
 
+reviewSchema.index({ placeId: 1, createdAt: -1 })
+
 const ReviewModel = mongoose.model('reviews', reviewSchema)
 
 mongoose.model('Review', reviewSchema)
