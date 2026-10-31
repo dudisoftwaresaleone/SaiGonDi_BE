@@ -5,18 +5,6 @@
     "/images/places/nha-tho-duc-ba-sai-gon/3.webp",
     "/images/places/nha-tho-duc-ba-sai-gon/4.webp"
   ],
-  "buu-dien-trung-tam-sai-gon": [
-    "/images/places/buu-dien-trung-tam-sai-gon/1.webp",
-    "/images/places/buu-dien-trung-tam-sai-gon/2.webp",
-    "/images/places/buu-dien-trung-tam-sai-gon/3.webp",
-    "/images/places/buu-dien-trung-tam-sai-gon/4.webp"
-  ],
-  "dinh-doc-lap-hoi-truong-thong-nhat": [
-    "/images/places/dinh-doc-lap-hoi-truong-thong-nhat/1.webp",
-    "/images/places/dinh-doc-lap-hoi-truong-thong-nhat/2.webp",
-    "/images/places/dinh-doc-lap-hoi-truong-thong-nhat/3.webp",
-    "/images/places/dinh-doc-lap-hoi-truong-thong-nhat/4.webp"
-  ],
   "cho-ben-thanh": [
     "/images/places/cho-ben-thanh/1.webp",
     "/images/places/cho-ben-thanh/2.webp",
@@ -160,5 +148,278 @@
   ],
   "lau-bo-nha-go-sai-gon": [],
   "rang-rang-coffee-thao-dien": [],
-  "the-myst-dong-khoi-khach-san-di-san": []
+  "the-myst-dong-khoi-khach-san-di-san": [],
+  "bao-tang-luc-luong-vu-trang-mien-dong-nam-bo": [
+    "/images/places/bao-tang-luc-luong-vu-trang-mien-dong-nam-bo/1.webp"
+  ],
+  "cong-vien-le-van-tam": [
+    "/images/places/cong-vien-le-van-tam/1.webp"
+  ],
+  "nha-van-hoa-thanh-nien-thanh-pho-ho-chi-minh": [],
+  "nha-hat-ben-thanh": [
+    "/images/places/nha-hat-ben-thanh/1.webp",
+    "/images/places/nha-hat-ben-thanh/2.webp"
+  ],
+  "cong-vien-van-hoa-dam-sen": [
+    "/images/places/cong-vien-van-hoa-dam-sen/1.webp",
+    "/images/places/cong-vien-van-hoa-dam-sen/2.webp",
+    "/images/places/cong-vien-van-hoa-dam-sen/3.webp"
+  ],
+  "tru-so-uy-ban-nhan-dan-thanh-pho-ho-chi-minh": [
+    "/images/places/tru-so-uy-ban-nhan-dan-thanh-pho-ho-chi-minh/1.webp",
+    "/images/places/tru-so-uy-ban-nhan-dan-thanh-pho-ho-chi-minh/2.webp",
+    "/images/places/tru-so-uy-ban-nhan-dan-thanh-pho-ho-chi-minh/3.webp"
+  ],
+  "cho-an-dong": [
+    "/images/places/cho-an-dong/1.webp",
+    "/images/places/cho-an-dong/2.webp",
+    "/images/places/cho-an-dong/3.webp"
+  ],
+  "cho-dau-moi-binh-dien": [
+    "/images/places/cho-dau-moi-binh-dien/1.webp"
+  ],
+  "thu-vien-khoa-hoc-tong-hop-thanh-pho-ho-chi-minh": [
+    "/images/places/thu-vien-khoa-hoc-tong-hop-thanh-pho-ho-chi-minh/1.webp",
+    "/images/places/thu-vien-khoa-hoc-tong-hop-thanh-pho-ho-chi-minh/2.webp",
+    "/images/places/thu-vien-khoa-hoc-tong-hop-thanh-pho-ho-chi-minh/3.webp"
+  ],
+  "khach-san-new-world": [
+    "/images/places/khach-san-new-world/1.webp"
+  ],
+  "sc-vivocity": [
+    "/images/places/sc-vivocity/1.webp"
+  ],
+  "cong-truong-lam-son": [
+    "/images/places/cong-truong-lam-son/1.webp",
+    "/images/places/cong-truong-lam-son/2.webp",
+    "/images/places/cong-truong-lam-son/3.webp"
+  ],
+  "cong-truong-me-linh": [
+    "/images/places/cong-truong-me-linh/1.webp",
+    "/images/places/cong-truong-me-linh/2.webp",
+    "/images/places/cong-truong-me-linh/3.webp"
+  ],
+  "cong-vien-bach-tung-diep": [
+    "/images/places/cong-vien-bach-tung-diep/1.webp",
+    "/images/places/cong-vien-bach-tung-diep/2.webp",
+    "/images/places/cong-vien-bach-tung-diep/3.webp"
+  ],
+  "cong-vien-chi-lang": [
+    "/images/places/cong-vien-chi-lang/1.webp",
+    "/images/places/cong-vien-chi-lang/2.webp",
+    "/images/places/cong-vien-chi-lang/3.webp"
+  ],
+  "cong-vien-le-thi-rieng": [
+    "/images/places/cong-vien-le-thi-rieng/1.webp",
+    "/images/places/cong-vien-le-thi-rieng/2.webp",
+    "/images/places/cong-vien-le-thi-rieng/3.webp"
+  ],
+  "cong-vien-30-4": [
+    "/images/places/cong-vien-30-4/1.webp"
+  ],
+  "thuong-xa-tax": [
+    "/images/places/thuong-xa-tax/1.webp",
+    "/images/places/thuong-xa-tax/2.webp",
+    "/images/places/thuong-xa-tax/3.webp"
+  ],
+  "chua-vinh-nghiem": [
+    "/images/places/chua-vinh-nghiem/1.webp",
+    "/images/places/chua-vinh-nghiem/2.webp",
+    "/images/places/chua-vinh-nghiem/3.webp"
+  ],
+  "cho-dan-sinh": [
+    "/images/places/cho-dan-sinh/1.webp"
+  ],
+  "cho-hanh-thong-tay": [
+    "/images/places/cho-hanh-thong-tay/1.webp"
+  ],
+  "cong-truong-cong-xa-paris": [
+    "/images/places/cong-truong-cong-xa-paris/1.webp",
+    "/images/places/cong-truong-cong-xa-paris/2.webp",
+    "/images/places/cong-truong-cong-xa-paris/3.webp"
+  ],
+  "khach-san-caravelle-sai-gon": [
+    "/images/places/khach-san-caravelle-sai-gon/1.webp",
+    "/images/places/khach-san-caravelle-sai-gon/2.webp",
+    "/images/places/khach-san-caravelle-sai-gon/3.webp"
+  ],
+  "chua-xa-loi": [
+    "/images/places/chua-xa-loi/1.webp",
+    "/images/places/chua-xa-loi/2.webp",
+    "/images/places/chua-xa-loi/3.webp"
+  ],
+  "khu-du-lich-van-hoa-suoi-tien": [
+    "/images/places/khu-du-lich-van-hoa-suoi-tien/1.webp"
+  ],
+  "chua-giac-lam": [
+    "/images/places/chua-giac-lam/1.webp",
+    "/images/places/chua-giac-lam/2.webp",
+    "/images/places/chua-giac-lam/3.webp"
+  ],
+  "den-ba-an-thanh-pho-ho-chi-minh": [
+    "/images/places/den-ba-an-thanh-pho-ho-chi-minh/1.webp",
+    "/images/places/den-ba-an-thanh-pho-ho-chi-minh/2.webp",
+    "/images/places/den-ba-an-thanh-pho-ho-chi-minh/3.webp"
+  ],
+  "diamond-plaza": [
+    "/images/places/diamond-plaza/1.webp",
+    "/images/places/diamond-plaza/2.webp",
+    "/images/places/diamond-plaza/3.webp"
+  ],
+  "khach-san-continental": [
+    "/images/places/khach-san-continental/1.webp",
+    "/images/places/khach-san-continental/2.webp",
+    "/images/places/khach-san-continental/3.webp"
+  ],
+  "toa-nha-saigon-times-square": [
+    "/images/places/toa-nha-saigon-times-square/1.webp",
+    "/images/places/toa-nha-saigon-times-square/2.webp",
+    "/images/places/toa-nha-saigon-times-square/3.webp"
+  ],
+  "saigon-trade-center": [
+    "/images/places/saigon-trade-center/1.webp",
+    "/images/places/saigon-trade-center/2.webp",
+    "/images/places/saigon-trade-center/3.webp"
+  ],
+  "hoi-quan-on-lang": [
+    "/images/places/hoi-quan-on-lang/1.webp",
+    "/images/places/hoi-quan-on-lang/2.webp",
+    "/images/places/hoi-quan-on-lang/3.webp"
+  ],
+  "khach-san-rex": [
+    "/images/places/khach-san-rex/1.webp",
+    "/images/places/khach-san-rex/2.webp",
+    "/images/places/khach-san-rex/3.webp"
+  ],
+  "lang-ong-ba-chieu": [
+    "/images/places/lang-ong-ba-chieu/1.webp",
+    "/images/places/lang-ong-ba-chieu/2.webp",
+    "/images/places/lang-ong-ba-chieu/3.webp"
+  ],
+  "cho-kim-bien": [
+    "/images/places/cho-kim-bien/1.webp"
+  ],
+  "cho-pham-van-hai": [
+    "/images/places/cho-pham-van-hai/1.webp"
+  ],
+  "cong-vien-gia-dinh": [
+    "/images/places/cong-vien-gia-dinh/1.webp",
+    "/images/places/cong-vien-gia-dinh/2.webp",
+    "/images/places/cong-vien-gia-dinh/3.webp"
+  ],
+  "cong-vien-tao-dan": [
+    "/images/places/cong-vien-tao-dan/1.webp",
+    "/images/places/cong-vien-tao-dan/2.webp",
+    "/images/places/cong-vien-tao-dan/3.webp"
+  ],
+  "grand-hotel-sai-gon": [
+    "/images/places/grand-hotel-sai-gon/1.webp",
+    "/images/places/grand-hotel-sai-gon/2.webp",
+    "/images/places/grand-hotel-sai-gon/3.webp"
+  ],
+  "nha-tho-cho-quan": [
+    "/images/places/nha-tho-cho-quan/1.webp",
+    "/images/places/nha-tho-cho-quan/2.webp",
+    "/images/places/nha-tho-cho-quan/3.webp"
+  ],
+  "nha-tho-hanh-thong-tay": [
+    "/images/places/nha-tho-hanh-thong-tay/1.webp",
+    "/images/places/nha-tho-hanh-thong-tay/2.webp",
+    "/images/places/nha-tho-hanh-thong-tay/3.webp"
+  ],
+  "nha-tho-thanh-jeanne-d-arc": [
+    "/images/places/nha-tho-thanh-jeanne-d-arc/1.webp",
+    "/images/places/nha-tho-thanh-jeanne-d-arc/2.webp",
+    "/images/places/nha-tho-thanh-jeanne-d-arc/3.webp"
+  ],
+  "thanh-that-sai-gon": [
+    "/images/places/thanh-that-sai-gon/1.webp",
+    "/images/places/thanh-that-sai-gon/2.webp",
+    "/images/places/thanh-that-sai-gon/3.webp"
+  ],
+  "dinh-chi-hoa": [
+    "/images/places/dinh-chi-hoa/1.webp",
+    "/images/places/dinh-chi-hoa/2.webp",
+    "/images/places/dinh-chi-hoa/3.webp"
+  ],
+  "den-tho-vua-hung": [
+    "/images/places/den-tho-vua-hung/1.webp",
+    "/images/places/den-tho-vua-hung/2.webp",
+    "/images/places/den-tho-vua-hung/3.webp"
+  ],
+  "cho-ba-chieu": [
+    "/images/places/cho-ba-chieu/1.webp"
+  ],
+  "khu-du-lich-van-thanh": [
+    "/images/places/khu-du-lich-van-thanh/1.webp"
+  ],
+  "dinh-binh-hoa": [
+    "/images/places/dinh-binh-hoa/1.webp",
+    "/images/places/dinh-binh-hoa/2.webp"
+  ],
+  "thap-vietcombank": [
+    "/images/places/thap-vietcombank/1.webp",
+    "/images/places/thap-vietcombank/2.webp",
+    "/images/places/thap-vietcombank/3.webp"
+  ],
+  "dinh-binh-dong": [
+    "/images/places/dinh-binh-dong/1.webp"
+  ],
+  "hoi-quan-nghia-nhuan": [
+    "/images/places/hoi-quan-nghia-nhuan/1.webp"
+  ],
+  "nha-tho-hoi-giao-musulman": [
+    "/images/places/nha-tho-hoi-giao-musulman/1.webp",
+    "/images/places/nha-tho-hoi-giao-musulman/2.webp",
+    "/images/places/nha-tho-hoi-giao-musulman/3.webp"
+  ],
+  "khach-san-majestic-saigon": [
+    "/images/places/khach-san-majestic-saigon/1.webp",
+    "/images/places/khach-san-majestic-saigon/2.webp",
+    "/images/places/khach-san-majestic-saigon/3.webp"
+  ],
+  "khach-san-silverland-sakyo": [
+    "/images/places/khach-san-silverland-sakyo/1.webp"
+  ],
+  "dai-don-chi-hoa": [],
+  "khach-san-hoa-bao-duong-thong-nhat": [],
+  "bao-tang-thanh-pho-ho-chi-minh": [
+    "/images/places/bao-tang-thanh-pho-ho-chi-minh/1.webp",
+    "/images/places/bao-tang-thanh-pho-ho-chi-minh/2.webp"
+  ],
+  "cot-co-thu-ngu": [
+    "/images/places/cot-co-thu-ngu/1.webp"
+  ],
+  "bao-tang-lich-su-thanh-pho-ho-chi-minh": [
+    "/images/places/bao-tang-lich-su-thanh-pho-ho-chi-minh/1.webp"
+  ],
+  "ifc-saigon-one": [
+    "/images/places/ifc-saigon-one/1.webp"
+  ],
+  "sunwah-tower": [
+    "/images/places/sunwah-tower/1.webp",
+    "/images/places/sunwah-tower/2.webp"
+  ],
+  "nha-tho-cha-tam": [
+    "/images/places/nha-tho-cha-tam/1.webp"
+  ],
+  "saigon-centre": [
+    "/images/places/saigon-centre/1.webp",
+    "/images/places/saigon-centre/2.webp"
+  ],
+  "den-tho-tran-hung-dao-thanh-pho-ho-chi-minh": [
+    "/images/places/den-tho-tran-hung-dao-thanh-pho-ho-chi-minh/1.webp"
+  ],
+  "ngoi-nha-duc-thanh-pho-ho-chi-minh": [
+    "/images/places/ngoi-nha-duc-thanh-pho-ho-chi-minh/1.webp"
+  ],
+  "buu-dien-trung-tam-sai-gon": [
+    "/images/places/buu-dien-trung-tam-sai-gon/1.webp",
+    "/images/places/buu-dien-trung-tam-sai-gon/2.webp"
+  ],
+  "dinh-doc-lap-hoi-truong-thong-nhat": [
+    "/images/places/dinh-doc-lap-hoi-truong-thong-nhat/1.webp",
+    "/images/places/dinh-doc-lap-hoi-truong-thong-nhat/2.webp",
+    "/images/places/dinh-doc-lap-hoi-truong-thong-nhat/3.webp"
+  ]
 }
