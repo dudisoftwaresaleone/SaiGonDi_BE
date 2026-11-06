@@ -1,3 +1,4 @@
+import { env } from "~/config/environment.js";
 import ApiError from "~/utils/ApiError.js";
 import { StatusCodes } from "http-status-codes";
 import { jwtGenerate, requestNewToken } from "~/utils/jwt.js";
@@ -38,6 +39,33 @@ const register = async (userData) => {
         StatusCodes.CONFLICT,
         "Email đã tồn tại. Vui lòng sử dụng email khác."
       );
+    }
+
+    // Không bắt xác thực email: tạo tài khoản dùng được ngay (không gửi mail OTP).
+    if (!env.REQUIRE_EMAIL_VERIFICATION) {
+      if (user) {
+        // Tài khoản cũ đang chờ xác minh (từ luồng OTP trước đây): cập nhật và kích hoạt luôn
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.password = password;
+        if (avatar) user.avatar = avatar;
+        user.emailVerified = true;
+        await user.save();
+      } else {
+        await new UserModel({
+          firstName,
+          lastName,
+          email,
+          avatar,
+          password,
+          emailVerified: true,
+        }).save();
+      }
+      await OTPModel.deleteMany({ email, type: "registration" }).catch(() => {});
+      return {
+        message: "Đăng ký thành công. Bạn có thể đăng nhập ngay.",
+        emailVerificationRequired: false,
+      };
     }
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
@@ -93,6 +121,7 @@ const register = async (userData) => {
     return {
       message:
         "Đăng ký thành công. Vui lòng kiểm tra email của bạn để lấy mã OTP xác minh tài khoản.",
+      emailVerificationRequired: true,
     };
   } catch (error) {
     console.error("[REGISTER] Real error:", error.message || error);

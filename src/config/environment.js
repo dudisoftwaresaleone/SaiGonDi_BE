@@ -20,6 +20,8 @@ export const env = {
   EMAIL_PASS: process.env.EMAIL_PASS,
   // Tuỳ chọn: gửi mail qua HTTPS API (khuyến nghị trên Render free vì SMTP bị chặn)
   MAIL_FROM: process.env.MAIL_FROM,
+  // Mặc định TẮT: đăng ký xong dùng được ngay, không gửi mail OTP (Render free chặn SMTP). Đặt 'true' để bật lại bước xác thực email.
+  REQUIRE_EMAIL_VERIFICATION: process.env.REQUIRE_EMAIL_VERIFICATION === 'true',
   BREVO_API_KEY: process.env.BREVO_API_KEY,
   RESEND_API_KEY: process.env.RESEND_API_KEY,
 

@@ -25,6 +25,7 @@ const register = async (req, res, next) => {
     res.status(StatusCodes.CREATED).json({
       success: true,
       message: result.message,
+      emailVerificationRequired: result.emailVerificationRequired,
     });
   } catch (error) {
     next(error);
