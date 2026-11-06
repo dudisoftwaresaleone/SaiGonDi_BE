@@ -21,7 +21,10 @@ const dbNames = (process.env.DB_NAMES || process.env.DATABASE_NAME || 'saigondi'
 const TYPE_BY_PREFIX = { 'phường': 'phường', 'xã': 'xã', 'đặc khu': 'đặc khu' }
 
 export function parseWardFromAddress(address) {
-  const m = /(Phường|Xã|Đặc khu)\s+([^,]+)/i.exec(address || '')
+  // Ưu tiên "Phường X"; "xã"/"Đặc khu" chỉ lấy khi đứng riêng (không phải trong "Công xã Paris")
+  const m =
+    /(?:^|[\s,])(Phường)\s+([^,]+)/i.exec(address || '') ||
+    /(?:^|[\s,])(?<!Công\s)(Xã|Đặc khu)\s+([^,]+)/i.exec(address || '')
   if (!m) return null
   const type = TYPE_BY_PREFIX[m[1].toLowerCase()]
   const raw = m[2].trim()
@@ -47,6 +50,13 @@ if (process.argv[1] && process.argv[1].endsWith('normalizePlaceWards.js')) {
       if (!parsed) { console.warn(`  ? ${place.name}: địa chỉ không có phường/xã, bỏ qua (${place.address})`); skipped++; continue }
 
       let target = byName.get(parsed.name) || byName.get(`Đặc khu ${parsed.name}`)
+      // Chỉ tự tạo ward cho phường đánh số ("Phường 12"). Tên phường sau sáp nhập (Sài Gòn, Xuân Hòa...) KHÔNG có vùng
+      // trên bản đồ check-in và sẽ làm lệch mẫu số "x/176 xã, phường" -> bỏ qua, chờ quyết định cách gọi tên.
+      if (!target && !/^Phường \d+$/.test(parsed.name)) {
+        console.log(`  - bỏ qua ${place.name}: chưa có ward "${parsed.name}" (không tự tạo)`)
+        skipped++
+        continue
+      }
       if (!target) {
         const doc = {
           name: parsed.name,
