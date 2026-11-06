@@ -3,7 +3,9 @@
 //   buildDiacriticRegex('banh mi')  -> RegExp khớp cả "bánh mì" lẫn "banh mi" trong dữ liệu
 // Dùng regex (không cần migrate dữ liệu hay thêm cột) vì dữ liệu chỉ vài trăm địa điểm.
 
-const COMBINING = '\\u0300-\\u036f'
+// LƯU Ý: MongoDB dùng PCRE, KHÔNG hỗ trợ escape kiểu "\uXXXX" trong regex -> phải đưa ký tự thật vào
+// (dải dấu rời U+0300..U+036F), nếu không truy vấn có chữ cái sẽ lỗi 500.
+const COMBINING = `${String.fromCharCode(0x0300)}-${String.fromCharCode(0x036f)}`
 
 const VI_VARIANTS = {
   a: 'aàáảãạăằắẳẵặâầấẩẫậ',
