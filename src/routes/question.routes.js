@@ -3,13 +3,17 @@ import { verifyToken } from '~/middlewares/auth.middleware.js'
 import { questionController } from '~/controllers/question.controller.js'
 import { questionValidation } from '~/validations/question.validation.js'
 import { generalValidation } from '~/validations/general.validation.js'
+import { cacheResponse, invalidateCacheOnWrite } from '~/middlewares/cache.middleware.js'
 
 const Router = express.Router()
+
+// Danh sách câu hỏi cache ngắn (15s); mọi thao tác ghi sẽ xoá cache ngay
+Router.use(invalidateCacheOnWrite('questions'))
 
 // Question routes
 Router.route('/')
   .post(verifyToken, questionValidation.createNew, questionController.createQuestion)
-  .get(questionValidation.getQuestions, questionController.getQuestions)
+  .get(questionValidation.getQuestions, cacheResponse(15, 'questions'), questionController.getQuestions)
 
 Router.route('/:id')
   .get(generalValidation.paramIdValidate, questionController.getQuestionById)

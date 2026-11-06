@@ -52,5 +52,9 @@ const questionSchema = new mongoose.Schema(
   }
 )
 
+questionSchema.index({ isDeleted: 1, createdAt: -1 })
+questionSchema.index({ isDeleted: 1, totalLikes: -1 })
+questionSchema.index({ isDeleted: 1, views: -1 })
+
 const QuestionModel = mongoose.model('questions', questionSchema)
 export default QuestionModel

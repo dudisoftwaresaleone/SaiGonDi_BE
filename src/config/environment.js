@@ -18,6 +18,10 @@ export const env = {
   // Email
   EMAIL_USER: process.env.EMAIL_USER,
   EMAIL_PASS: process.env.EMAIL_PASS,
+  // Tuỳ chọn: gửi mail qua HTTPS API (khuyến nghị trên Render free vì SMTP bị chặn)
+  MAIL_FROM: process.env.MAIL_FROM,
+  BREVO_API_KEY: process.env.BREVO_API_KEY,
+  RESEND_API_KEY: process.env.RESEND_API_KEY,
 
   // Cloudinary
   CLOUD_NAME: process.env.CLOUD_NAME,

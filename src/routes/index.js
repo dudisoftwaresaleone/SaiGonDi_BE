@@ -20,6 +20,11 @@ Router.get('/status', (req, res) => {
   res.status(200).json({ message: 'API is running' })
 })
 
+// Nhẹ, không chạm DB: dùng cho uptime monitor / giữ server không "ngủ" (cold start)
+Router.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK', uptime: process.uptime(), timestamp: new Date().toISOString() })
+})
+
 Router.use('/uploads', uploadRoute)
 Router.use('/blogs', blogRoute)
 Router.use('/comments', blogCommentRoute)

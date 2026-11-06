@@ -19,18 +19,25 @@ const createQuestion = async (questionData, userId) => {
 
 const getQuestions = async (queryParams) => {
   try {
-    const { page = 1, limit = 10, sortBy = 'createdAt', sortOrder = 'desc' } = queryParams
+    const { sortBy = 'createdAt', sortOrder = 'desc' } = queryParams
+    const page = Math.max(parseInt(queryParams.page, 10) || 1, 1)
+    const limit = Math.min(Math.max(parseInt(queryParams.limit, 10) || 10, 1), 100)
     const startIndex = (page - 1) * limit
 
-    const questions = await QuestionModel.find({ isDeleted: false })
-      .populate({
-        path: 'author',
-        select: '_id firstName lastName avatar'
-      })
-      .sort({ [sortBy]: sortOrder === 'desc' ? -1 : 1 })
-      .skip(startIndex)
-      .limit(limit)
-      .lean()
+    // find + count chạy song song; không tải mảng likes/answers (có thể rất dài) vì danh sách chỉ cần số đếm
+    const [questions, total] = await Promise.all([
+      QuestionModel.find({ isDeleted: false })
+        .select('-likes -answers')
+        .populate({
+          path: 'author',
+          select: '_id firstName lastName avatar'
+        })
+        .sort({ [sortBy]: sortOrder === 'desc' ? -1 : 1 })
+        .skip(startIndex)
+        .limit(limit)
+        .lean(),
+      QuestionModel.countDocuments({ isDeleted: false })
+    ])
 
     const formatted = questions.map(q => ({
       ...q,
@@ -38,8 +45,6 @@ const getQuestions = async (queryParams) => {
       authorName: `${q.author?.firstName || ''} ${q.author?.lastName || ''}`.trim(),
       authorAvatar: q.author?.avatar || null,
     }))
-
-    const total = await QuestionModel.countDocuments({ isDeleted: false })
 
     return {
       questions: formatted,

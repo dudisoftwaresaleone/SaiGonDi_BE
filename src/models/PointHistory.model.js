@@ -25,4 +25,7 @@ const PointHistorySchema = new mongoose.Schema({
   }
 })
 
+PointHistorySchema.index({ userId: 1, badgeId: 1 })
+PointHistorySchema.index({ userId: 1, createdAt: -1 })
+
 export default mongoose.model('point_histories', PointHistorySchema)

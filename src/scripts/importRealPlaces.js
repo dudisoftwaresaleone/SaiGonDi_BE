@@ -42,18 +42,23 @@ await mongoose.connect(process.env.MONGODB_URI, { dbName: process.env.TARGET_DB 
 const admin = await User.findOne({ role: 'admin' })
 if (!admin) throw new Error('Không tìm thấy tài khoản admin để gán createdBy')
 const categories = new Map((await Category.find({ type: 'place' })).map((c) => [c.name, c._id]))
-const wards = (await Ward.find({ type: 'phường' })).map((w) => ({ _id: w._id, name: w.name }))
+const wards = (await Ward.find({})).map((w) => ({ _id: w._id, name: w.name }))
 
-// Dữ liệu nguồn dùng tên phường mới sau sáp nhập (2025), còn bảng wards trong DB là tên phường cũ.
-// Gán theo cách bộ seed hiện tại đang dùng (trung tâm Q1 -> Bến Nghé, khu Q3 cũ -> Võ Thị Sáu).
-// (Không khớp theo tọa độ: location của wards trong DB bị lưu đảo lat/lon.)
-const WARD_ALIAS = { 'Sài Gòn': 'Bến Nghé', 'Xuân Hòa': 'Võ Thị Sáu' }
-function findWard(p) {
-  const raw = (p.wardName || '').replace(/^Phường\s+/i, '').trim()
-  const name = WARD_ALIAS[raw] || raw
-  const ward = wards.find((w) => w.name === name)
-  if (!ward) throw new Error(`Không tìm thấy phường "${raw}" cho ${p.name}`)
-  return { ward, aliased: name !== raw }
+// Nhãn phường PHẢI khớp phường ghi trong địa chỉ (nguồn dùng tên phường mới sau sáp nhập 2025, vd "Phường Sài Gòn").
+// Trước đây quy đổi sang tên phường cũ (Sài Gòn -> Bến Nghé) khiến nhãn lệch địa chỉ; nay tìm ward cùng tên, chưa có thì tạo.
+// (Không khớp theo tọa độ: location của wards trong DB không đáng tin.)
+async function findWard(p) {
+  const name = (p.wardName || '').replace(/^(Phường|Xã|Đặc khu)\s+/i, '').trim()
+  let ward = wards.find((w) => w.name === name)
+  let created = false
+  if (!ward) {
+    console.log(`  + tạo ward "${name}"`)
+    const doc = { name, type: 'phường', location: { type: 'Point', coordinates: p.location.coordinates } }
+    ward = DRY ? { _id: new mongoose.Types.ObjectId(), name } : await Ward.create(doc)
+    wards.push({ _id: ward._id, name })
+    created = true
+  }
+  return { ward, aliased: created }
 }
 
 const cleanName = (n) => n.replace(/\s*\((Thành phố Hồ Chí Minh)\)\s*$/i, '').trim()
@@ -66,7 +71,7 @@ for (const p of realPlaces) {
 
   const catId = categories.get(p.category)
   if (!catId) { console.warn(`  ! ${name}: không có danh mục "${p.category}"`); skipped++; continue }
-  const { ward, aliased } = findWard(p)
+  const { ward, aliased } = await findWard(p)
   if (aliased) aliasedWard++
   const images = placeImages[imageKey(p.name)] ?? []
   if (!images.length) noImage++
@@ -85,9 +90,9 @@ for (const p of realPlaces) {
     createdBy: admin._id,
     verifiedBy: admin._id
   }
-  console.log(`  + ${name} | ${p.category} | ward=${ward.name}${aliased ? ' (quy đổi từ ' + p.wardName + ')' : ''} | ${images.length} ảnh`)
+  console.log(`  + ${name} | ${p.category} | ward=${ward.name}${aliased ? ' (ward mới)' : ''} | ${images.length} ảnh`)
   if (!DRY) await Place.create(doc)
   created++
 }
-console.log(`\n${DRY ? '[dry-run] ' : ''}Tạo ${created}, bỏ qua ${skipped}; ward quy đổi tên cũ: ${aliasedWard}; chưa có ảnh: ${noImage}`)
+console.log(`\n${DRY ? '[dry-run] ' : ''}Tạo ${created}, bỏ qua ${skipped}; ward tạo mới: ${aliasedWard}; chưa có ảnh: ${noImage}`)
 await mongoose.disconnect()

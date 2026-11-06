@@ -153,6 +153,9 @@ blogSchema.index({ categories: 1 })
 
 blogSchema.index({ status: 1, privacy: 1, createdAt: -1 })
 blogSchema.index({ viewCount: -1 })
+// Danh sách công khai: lọc destroy/status/privacy rồi sắp xếp theo ngày mới nhất / lượt xem
+blogSchema.index({ destroy: 1, status: 1, privacy: 1, createdAt: -1 })
+blogSchema.index({ destroy: 1, status: 1, privacy: 1, viewCount: -1 })
 
 const BlogModel = mongoose.model('blogs', blogSchema)
 mongoose.model('Blog', blogSchema)

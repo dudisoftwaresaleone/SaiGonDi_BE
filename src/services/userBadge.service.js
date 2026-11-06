@@ -249,25 +249,15 @@ const grantSpecialBadge = async (userId, badgeId, options = {}) => {
  * @param {object} badge - Badge object
  * @param {object} userBadgeData - User's progress for this badge
  */
-const calculateBadgeActionCounts = async (userId, badge, userBadgeData) => {
+const calculateBadgeActionCounts = (badge, userBadgeData, historiesByBadge) => {
   if (!userBadgeData || !badge.condition) {
     return {}
   }
 
   const actionCounts = {}
-  
-  // Get all actions for this badge from PointHistory
-  const pointHistories = await PointHistory.find({ userId, badgeId: badge._id }).lean()
-  
-  // Count each action type
-  for (const history of pointHistories) {
-    const action = history.action
-    if (!actionCounts[action]) {
-      actionCounts[action] = 0
-    }
-    actionCounts[action]++
+  for (const history of historiesByBadge.get(badge._id.toString()) || []) {
+    actionCounts[history.action] = (actionCounts[history.action] || 0) + 1
   }
-
   return actionCounts
 }
 
@@ -279,9 +269,20 @@ const getBadgesForUser = async (userId) => {
   // This function ensures the first rank badge is created with 'in_progress' status
   await initializeFirstRankBadge(userId)
 
-  // 1. Get ALL badges and the user's progress
-  const allBadges = await Badge.find({}).sort({ rankOrder: 1, createdAt: 1 }).lean()
-  const userBadges = await UserBadge.find({ userId: userId }).lean()
+  // 1. Get ALL badges, the user's progress and the point history in parallel
+  // (một truy vấn PointHistory cho tất cả huy hiệu thay vì mỗi huy hiệu một truy vấn)
+  const [allBadges, userBadges, pointHistories] = await Promise.all([
+    Badge.find({}).sort({ rankOrder: 1, createdAt: 1 }).lean(),
+    UserBadge.find({ userId: userId }).lean(),
+    PointHistory.find({ userId, badgeId: { $ne: null } }).select('badgeId action').lean()
+  ])
+
+  const historiesByBadge = new Map()
+  for (const h of pointHistories) {
+    const key = h.badgeId.toString()
+    if (!historiesByBadge.has(key)) historiesByBadge.set(key, [])
+    historiesByBadge.get(key).push(h)
+  }
 
   // 2. Create a map for efficient lookup
   const userBadgesMap = userBadges.reduce((acc, ub) => {
@@ -292,7 +293,7 @@ const getBadgesForUser = async (userId) => {
   const now = new Date()
 
   // 3. Combine badge data with user progress
-  const result = await Promise.all(allBadges.map(async (badge) => {
+  const result = allBadges.map((badge) => {
     const userBadgeData = userBadgesMap[badge._id.toString()]
 
     // Start with the status from the database if it exists, otherwise it's locked.
@@ -327,7 +328,7 @@ const getBadgesForUser = async (userId) => {
     }
 
     // Calculate action counts for this badge
-    const actionCounts = await calculateBadgeActionCounts(userId, badge, userBadgeData)
+    const actionCounts = calculateBadgeActionCounts(badge, userBadgeData, historiesByBadge)
 
     return {
       ...badge,
@@ -340,7 +341,7 @@ const getBadgesForUser = async (userId) => {
       condition: badge.condition || {},
       actionCounts: actionCounts
     }
-  }))
+  })
 
   return result
 }

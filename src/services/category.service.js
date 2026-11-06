@@ -28,6 +28,8 @@ const getAllCategories = async (query) => {
           from: 'blogs',
           localField: '_id',
           foreignField: 'categories',
+          // Chỉ lấy các trường cần để đếm, tránh kéo cả nội dung bài viết vào bộ nhớ
+          pipeline: [{ $project: { status: 1, privacy: 1, destroy: 1 } }],
           as: 'blogs'
         }
       },
@@ -36,12 +38,29 @@ const getAllCategories = async (query) => {
           from: 'places',
           localField: '_id',
           foreignField: 'categories',
+          pipeline: [{ $project: { _id: 1 } }],
           as: 'places'
         }
       },
       {
         $addFields: {
           blogCount: { $size: '$blogs' },
+          // Số bài khách thật sự xem được (đã duyệt, công khai, chưa xoá) - FE dùng để ẩn danh mục trống
+          publicBlogCount: {
+            $size: {
+              $filter: {
+                input: '$blogs',
+                as: 'b',
+                cond: {
+                  $and: [
+                    { $eq: ['$$b.status', 'approved'] },
+                    { $eq: ['$$b.privacy', 'public'] },
+                    { $ne: ['$$b.destroy', true] }
+                  ]
+                }
+              }
+            }
+          },
           placeCount: { $size: '$places' }
         }
       },

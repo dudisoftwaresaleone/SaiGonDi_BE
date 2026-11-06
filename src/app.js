@@ -71,6 +71,15 @@ const START_SERVER = async () => {
   app.listen(APP_PORT, APP_HOST, () => {
     console.log(`Server running at http://${APP_HOST}:${APP_PORT}`)
   })
+
+  // Render free ngủ sau ~15 phút không có request -> request đầu tiên mất 30-50 giây (cold start).
+  // Tự gọi /api/health qua địa chỉ công khai mỗi 10 phút để giữ server thức (chỉ chạy khi Render cung cấp RENDER_EXTERNAL_URL).
+  if (process.env.RENDER_EXTERNAL_URL) {
+    const pingUrl = `${process.env.RENDER_EXTERNAL_URL.replace(/\/+$/, '')}/api/health`
+    setInterval(() => {
+      fetch(pingUrl, { signal: AbortSignal.timeout(10000) }).catch(() => {})
+    }, 10 * 60 * 1000).unref()
+  }
 };
 
 (async () => {

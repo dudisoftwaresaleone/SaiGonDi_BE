@@ -15,6 +15,19 @@ import {
   generateOTPTextTemplate,
 } from "~/templates/otpEmail.template.js";
 
+// Gửi mail OTP: lỗi/timeout -> trả 503 có thông điệp rõ ràng (không để request treo hoặc báo 500 chung chung).
+const sendOtpMail = async (to, subject, text, html) => {
+  try {
+    await sendMail(to, subject, text, html);
+  } catch (error) {
+    console.error("[MAIL] Send failed:", error.message || error);
+    throw new ApiError(
+      StatusCodes.SERVICE_UNAVAILABLE,
+      "Không gửi được email xác thực lúc này. Vui lòng thử lại sau ít phút."
+    );
+  }
+};
+
 const register = async (userData) => {
   try {
     const { email, firstName, lastName, password, avatar } = userData;
@@ -64,12 +77,18 @@ const register = async (userData) => {
       expiryMinutes: 5,
     });
 
-    await sendMail(
-      email,
-      " Mã OTP Xác Thực Đăng Ký - Sài Gòn Đi",
-      textContent,
-      htmlContent
-    );
+    try {
+      await sendOtpMail(
+        email,
+        " Mã OTP Xác Thực Đăng Ký - Sài Gòn Đi",
+        textContent,
+        htmlContent
+      );
+    } catch (mailError) {
+      // Không giữ lại OTP (chứa dữ liệu đăng ký) khi người dùng chưa nhận được mã
+      await OTPModel.deleteOne({ _id: newOtpDoc._id }).catch(() => {});
+      throw mailError;
+    }
 
     return {
       message:
@@ -209,7 +228,7 @@ const sendPasswordResetOTP = async (email) => {
       expiryMinutes: 5,
     });
 
-    await sendMail(
+    await sendOtpMail(
       email,
       " Mã OTP Đặt Lại Mật Khẩu - Sài Gòn Đi",
       textContent,
@@ -291,7 +310,7 @@ const resendRegistrationOTP = async (email) => {
       expiryMinutes: 5,
     });
 
-    await sendMail(
+    await sendOtpMail(
       email,
       " Mã OTP Xác Thực Đăng Ký - Sài Gòn Đi",
       textContent,

@@ -1,4 +1,5 @@
 import Blog from '../models/Blog.model.js'
+import BlogComment from '../models/BlogComment.model.js'
 import Place from '../models/Place.model.js'
 import Category from '../models/Category.model.js'
 import slugify from 'slugify'
@@ -71,20 +72,42 @@ const processAlbumData = (album) => {
   }).filter(Boolean);
 }
 
+// Gắn totalComments cho cả danh sách bằng 1 truy vấn aggregate (thay vì FE gọi API bình luận cho từng bài).
+// Cách đếm giống getCommentsByBlog: chỉ tính bình luận của người dùng chưa bị cấm/xoá.
+const attachCommentCounts = async (blogs) => {
+  if (!Array.isArray(blogs) || blogs.length === 0) return blogs
+
+  const rows = await BlogComment.aggregate([
+    { $match: { blogId: { $in: blogs.map((b) => b._id) } } },
+    { $lookup: { from: 'users', localField: 'userId', foreignField: '_id', as: 'author' } },
+    { $match: { author: { $elemMatch: { banned: false, _destroyed: false } } } },
+    { $group: { _id: '$blogId', total: { $sum: 1 } } }
+  ])
+
+  const counts = new Map(rows.map((r) => [String(r._id), r.total]))
+  return blogs.map((b) => ({ ...b, totalComments: counts.get(String(b._id)) || 0 }))
+}
+
 // Helper function to get filtered blogs
-const _getFilteredBlogs = async (filter, sortCriteria, page, limit) => {
+// hideReports: danh sách công khai không cần (và không nên lộ) mảng reports nặng của bài viết
+const _getFilteredBlogs = async (filter, sortCriteria, page, limit, { hideReports = true } = {}) => {
   const skip = (page - 1) * limit
   const numericLimit = Number(limit)
 
-  const totalBlogs = await Blog.countDocuments(filter)
-  const blogs = await Blog.find(filter)
-    .populate(BLOG_POPULATION_FIELDS)
-    .sort(sortCriteria)
-    .skip(skip)
-    .limit(numericLimit)
-    .lean()
+  // Đếm và lấy dữ liệu song song thay vì tuần tự
+  const [totalBlogs, blogs] = await Promise.all([
+    Blog.countDocuments(filter),
+    Blog.find(filter, hideReports ? { reports: 0 } : undefined)
+      .populate(BLOG_POPULATION_FIELDS)
+      .sort(sortCriteria)
+      .skip(skip)
+      .limit(numericLimit)
+      .lean()
+  ])
+
+  const withCounts = await attachCommentCounts(blogs)
   return {
-    blogs: blogs.map(transformCategoriesToString),
+    blogs: withCounts.map(transformCategoriesToString),
     pagination: {
       currentPage: Number(page),
       totalPages: Math.ceil(totalBlogs / numericLimit),
@@ -122,7 +145,7 @@ const getBlogs = async (query, user) => {
     filter.status = 'approved'
   }
 
-  return _getFilteredBlogs(filter, { createdAt: -1 }, page, limit)
+  return _getFilteredBlogs(filter, { createdAt: -1 }, page, limit, { hideReports: user?.role !== 'admin' })
 }
 
 const searchBlogs = async (query, user) => {
@@ -199,16 +222,20 @@ const getPopularBlogs = async (query, user) => {
   const skip = (page - 1) * limit;
   const numericLimit = Number(limit);
 
-  const totalBlogs = await Blog.countDocuments(filter);
-  const blogs = await Blog.find(filter)
-    .populate(BLOG_POPULATION_FIELDS)
-    .sort({ viewCount: -1 })
-    .skip(skip)
-    .limit(numericLimit)
-    .lean();
+  const [totalBlogs, blogs] = await Promise.all([
+    Blog.countDocuments(filter),
+    Blog.find(filter, user?.role === 'admin' ? undefined : { reports: 0 })
+      .populate(BLOG_POPULATION_FIELDS)
+      .sort({ viewCount: -1 })
+      .skip(skip)
+      .limit(numericLimit)
+      .lean()
+  ]);
+
+  const withCounts = await attachCommentCounts(blogs);
 
   return {
-    blogs: blogs.map(transformCategoriesToString),
+    blogs: withCounts.map(transformCategoriesToString),
     pagination: {
       currentPage: Number(page),
       totalPages: Math.ceil(totalBlogs / numericLimit),

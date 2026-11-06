@@ -21,6 +21,7 @@ const Category = (await import('../models/Category.model.js')).default
 const Ward = (await import('../models/Ward.model.js')).default
 const Badge = (await import('../models/Badge.model.js')).default
 const Review = (await import('../models/Review.model.js')).default
+const { pickReviewTemplate, getReviewTemplates } = await import('../data/reviewTemplates.js')
 const BlogComment = (await import('../models/BlogComment.model.js')).default
 const Question = (await import('../models/Question.model.js')).default
 const Answer = (await import('../models/Answer.model.js')).default
@@ -169,7 +170,13 @@ const extraCentralWards = [
   { name: 'Phường 8', type: 'phường', location: { type: 'Point', coordinates: [106.7020, 10.7600] } },
   { name: 'Phường 11', type: 'phường', location: { type: 'Point', coordinates: [106.6580, 10.7530] } },
   { name: 'Tân Phú', type: 'phường', location: { type: 'Point', coordinates: [106.7210, 10.7280] } },
-  { name: 'Phường 10', type: 'phường', location: { type: 'Point', coordinates: [106.6710, 10.7650] } }
+  { name: 'Phường 10', type: 'phường', location: { type: 'Point', coordinates: [106.6710, 10.7650] } },
+  // Phường theo địa chỉ cũ của các địa điểm (nhãn phường phải khớp đúng phường ghi trong địa chỉ)
+  { name: 'Phường 2', type: 'phường', location: { type: 'Point', coordinates: [106.6514, 10.7501] } },
+  { name: 'Phường 4', type: 'phường', location: { type: 'Point', coordinates: [106.6548, 10.7592] } },
+  { name: 'Phường 5', type: 'phường', location: { type: 'Point', coordinates: [106.6835, 10.7712] } },
+  { name: 'Phường 12', type: 'phường', location: { type: 'Point', coordinates: [106.7067, 10.7681] } },
+  { name: 'Phường 21', type: 'phường', location: { type: 'Point', coordinates: [106.7135, 10.7985] } }
 ]
 
 // 5. 20 USERS DATA
@@ -611,7 +618,7 @@ const placesRaw = [
     description: 'Địa chỉ cơm tấm sườn nướng than trứ danh hơn 30 năm ở Sài Gòn từng lọt danh sách Michelin Bib Gourmand. Miếng sườn cốt lết dày bản được tẩm ướp đậm đà, nướng xém cạnh thơm lừng phủ kín đĩa cơm tấm dẻo thơm ăn kèm chả trứng, bì thính và chén nước mắm kẹo ớt tỏi đậm vị.',
     categoryName: 'Ẩm thực',
     address: '84 Đặng Văn Ngữ, Phường 10, Quận Phú Nhuận, TP. Hồ Chí Minh',
-    wardName: 'Phường 1',
+    wardName: 'Phường 10',
     district: 'Phú Nhuận',
     coordinates: [106.6745, 10.7938],
     images: [
@@ -627,7 +634,7 @@ const placesRaw = [
     description: 'Quán phở đậm phong vị miền Nam thành lập từ năm 1970, vinh dự nhận giải Michelin Bib Gourmand. Nước dùng hầm từ xương bò nguyên chất trong trẻo mà ngọt sâu thẳm, thịt bò tái lăn mềm ngọt cùng bò viên giòn dai thơm ngát mùi tiêu và quế hồi, ăn kèm rổ rau thơm ngập tràn ngò gai và húng quế.',
     categoryName: 'Ẩm thực',
     address: '303-305 Võ Văn Tần, Phường 5, Quận 3, TP. Hồ Chí Minh',
-    wardName: 'Võ Thị Sáu',
+    wardName: 'Phường 5',
     district: 'Quận 3',
     coordinates: [106.6835, 10.7712],
     images: [
@@ -659,7 +666,7 @@ const placesRaw = [
     description: 'Đầu mối bán buôn sầm uất mang dấu ấn lịch sử của vùng Chợ Lớn xưa, do thương gia Quách Đàm hưng công xây dựng. Ngôi chợ sở hữu kiến trúc giao thoa Đông - Tây độc đáo với mái ngói chồng lớp kiểu phương Đông, tháp chuông bát giác và hoa văn rồng uốn lượn uy nghiêm.',
     categoryName: 'Mua sắm',
     address: '57A Tháp Mười, Phường 2, Quận 6, TP. Hồ Chí Minh',
-    wardName: 'Phường 11',
+    wardName: 'Phường 2',
     district: 'Quận 6',
     coordinates: [106.6514, 10.7501],
     images: [
@@ -675,7 +682,7 @@ const placesRaw = [
     description: 'Con phố ẩm thực người Hoa nức tiếng gần xa với hàng chục quán sủi cảo gia truyền đỏ rực đèn lồng. Sủi cảo ở đây nhân nguyên con tôm tươi giòn ngọt bọc thịt nạc băm, ăn kèm nước dùng hầm mực khô, cá viên khổng lồ, da heo và cải ngọt xanh mướt.',
     categoryName: 'Ẩm thực đường phố',
     address: 'Đường Hà Tôn Quyền, Phường 4, Quận 11, TP. Hồ Chí Minh',
-    wardName: 'Phường 11',
+    wardName: 'Phường 4',
     district: 'Quận 11',
     coordinates: [106.6548, 10.7592],
     images: [
@@ -755,7 +762,7 @@ const placesRaw = [
     description: 'Nơi Bác Hồ kính yêu đã ra đi tìm đường cứu nước trên con tàu Amiral Latouche-Tréville ngày 5/6/1911. Tòa nhà cổ kính mang nét kiến trúc phương Tây kết hợp hình đôi rồng chầu mặt nguyệt trên nóc mái nhìn ra ngã ba sông Sài Gòn, trưng bày phong phú tài liệu, hiện vật quý báu về cuộc đời hoạt động cách mạng của Bác.',
     categoryName: 'Di tích lịch sử',
     address: '01 Nguyễn Tất Thành, Phường 12, Quận 4, TP. Hồ Chí Minh',
-    wardName: 'Phường 8',
+    wardName: 'Phường 12',
     district: 'Quận 4',
     coordinates: [106.7067, 10.7681],
     images: [
@@ -819,7 +826,7 @@ const placesRaw = [
     description: 'Hàng cơm tấm đêm huyền thoại nép mình trong con hẻm nhỏ khu Hàng Xanh, mở cửa phục vụ từ 21h đến rạng sáng hôm sau. Đĩa cơm tấm nóng hổi với chả cua béo ngậy, bì trộn thính thơm giòn, miếng sườn nướng mật ong mềm mọng nước luôn đông đúc những thực khách đói lòng về đêm.',
     categoryName: 'Ẩm thực đường phố',
     address: '294/35 Xô Viết Nghệ Tĩnh, Phường 21, Quận Bình Thạnh, TP. Hồ Chí Minh',
-    wardName: 'Phường 22',
+    wardName: 'Phường 21',
     district: 'Bình Thạnh',
     coordinates: [106.7135, 10.7985],
     images: [
@@ -899,7 +906,7 @@ const placesRaw = [
     description: 'Chợ hoa đầu mối lớn nhất TP.HCM rực rỡ sắc màu suốt 24/7. Những năm gần đây, con hẻm bên cạnh chợ hoa đã phát triển thành phố ẩm thực nhộn nhịp với đủ món ngon đường phố Campuchia, bún num-bò-chóc, chè bí đỏ, bánh lọt và nem nướng thơm lừng.',
     categoryName: 'Ẩm thực đường phố',
     address: 'Hẻm 52 Hồ Thị Kỷ, Phường 1, Quận 10, TP. Hồ Chí Minh',
-    wardName: 'Phường 10',
+    wardName: 'Phường 1',
     district: 'Quận 10',
     coordinates: [106.6715, 10.7655],
     images: [
@@ -931,7 +938,7 @@ const placesRaw = [
     description: 'Quán lẩu bò nức tiếng mang phong vị Đà Lạt về giữa lòng Sài Gòn. Nồi lẩu sôi sùng sục ngập tràn nạm bò, gân bò mềm giòn, đuôi bò béo ngậy cùng tàu hủ ky và đĩa rau xanh mơn mởn, chấm cùng chao ớt sa tế cay nồng đánh thức mọi giác quan.',
     categoryName: 'Ẩm thực',
     address: '162 Lý Thái Tổ, Phường 1, Quận 3, TP. Hồ Chí Minh',
-    wardName: 'Phường 10',
+    wardName: 'Phường 1',
     district: 'Quận 3',
     coordinates: [106.6778, 10.7682],
     images: [
@@ -1141,17 +1148,7 @@ const questionsRaw = [
   }
 ]
 
-// 9. PLACE REVIEWS
-const placeReviewTemplates = [
-  { rating: 5, comment: 'Địa điểm tuyệt đẹp và mang đậm dấu ấn lịch sử hào hùng của Sài Gòn! Không gian trang nghiêm, kiến trúc cổ kính được bảo tồn rất chỉn chu. Rất tự hào về thành phố.' },
-  { rating: 5, comment: 'Góc chụp ảnh check-in siêu đỉnh, lên hình đẹp mê ly luôn mọi người ơi! Khuyên các bạn nên đi vào buổi sáng sớm nắng xiên để có ánh sáng đẹp nhất.' },
-  { rating: 4, comment: 'Đồ ăn ở đây ngon xuất sắc, hương vị đậm đà chuẩn vị bản xứ. Phục vụ nhanh nhẹn dù quán rất đông khách, giá cả hợp lý so với chất lượng.' },
-  { rating: 5, comment: 'Lần đầu dẫn gia đình đến đây trải nghiệm, bố mẹ mình thích mê luôn! Không gian thoáng đãng mát mẻ, nhân viên nhiệt tình chu đáo.' },
-  { rating: 5, comment: 'Món ăn làm cực kỳ tâm huyết, nguyên liệu tươi rói. Nước sốt chấm cùng bánh mì giòn tan ngon đỉnh chóp, chắc chắn sẽ quay lại nhiều lần.' },
-  { rating: 4, comment: 'Quán decor phong cách vintage rất có gu, view ngắm phố phường cực chill. Đồ uống ngon, nhạc nhẹ nhàng thư giãn thích hợp làm việc và đọc sách.' },
-  { rating: 5, comment: 'Trải nghiệm ngắm hoàng hôn ở đây thực sự mãn nhãn! Không khí trong lành, lộng gió, cảm giác mọi âu lo mệt mỏi đều tan biến hết.' },
-  { rating: 4, comment: 'Địa điểm rất đáng ghé thăm khi đến Sài Gòn. Bạn nên chuẩn bị trang phục lịch sự và mang theo máy ảnh vì có rất nhiều góc đẹp.' }
-]
+// 9. PLACE REVIEWS: mẫu đánh giá theo loại địa điểm nằm ở src/data/reviewTemplates.js
 
 // 10. SEARCH LOGS
 const topSearchKeywords = [
@@ -1295,13 +1292,15 @@ const seedRealisticData = async () => {
     await Review.deleteMany({})
     let totalReviewsCreated = 0
 
-    for (const place of createdPlaces) {
-      const reviewCount = Math.floor(Math.random() * 3) + 4
+    for (const [placeIndex, place] of createdPlaces.entries()) {
+      const placeCategoryName = placesRaw[placeIndex].categoryName
+      // không vượt số mẫu của loại địa điểm để một địa điểm không có 2 đánh giá trùng nội dung
+      const reviewCount = Math.min(Math.floor(Math.random() * 3) + 4, getReviewTemplates(placeCategoryName).length)
       const placeRatings = []
 
       for (let r = 0; r < reviewCount; r++) {
         const reviewer = createdUsers[(totalReviewsCreated + r) % createdUsers.length]
-        const template = placeReviewTemplates[Math.floor(Math.random() * placeReviewTemplates.length)]
+        const template = pickReviewTemplate(placeCategoryName, placeIndex + r)
         const randomDaysAgo = Math.floor(Math.random() * 25) + 1
         const reviewDate = new Date(Date.now() - randomDaysAgo * 24 * 60 * 60 * 1000)
 
@@ -1323,7 +1322,7 @@ const seedRealisticData = async () => {
 
       const avg = placeRatings.reduce((a, b) => a + b, 0) / placeRatings.length
       place.avgRating = parseFloat(avg.toFixed(1))
-      place.totalRatings = placeRatings.length * 40 + Math.floor(Math.random() * 100)
+      place.totalRatings = placeRatings.length
       await place.save()
     }
     console.log(`✅ Đã nạp thành công ${totalReviewsCreated} Đánh giá chi tiết từ người dùng!`)

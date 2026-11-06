@@ -259,7 +259,8 @@ const getNearbyPlaces = async (req, res, next) => {
 
 const searchPlaces = async (req, res, next) => {
   try {
-    if (req.query.query) {
+    // suggest=1: gợi ý khi đang gõ -> không ghi vào lịch sử từ khoá tìm kiếm
+    if (req.query.query && req.query.suggest !== '1') {
       const keyword = req.query.query.toString().trim()
       if (keyword) {
         SearchLogModel.create({ keyword }).catch(err => console.error('Failed to log search keyword:', err));

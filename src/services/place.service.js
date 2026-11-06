@@ -12,6 +12,7 @@ import CategoryModel from '~/models/Category.model.js'
 import ServiceModel from '~/models/Service.model.js'
 import { userBadgeService } from './userBadge.service.js'
 import { errorHandler } from '~/middlewares/error.middleware.js'
+import { buildDiacriticRegex } from '~/utils/textSearch.js'
 
 const queryGenerate = async (id) => {
   if (id.match(OBJECT_ID_RULE)) {
@@ -188,6 +189,7 @@ const getPlacesMapdata = async (queryParams = {}) => {
     const sortBy = queryParams.sortBy || 'createdAt'
     const sortOrder = queryParams.sortOrder === 'desc' ? -1 : 1
 
+    // Bỏ countDocuments (kết quả không được dùng) để giảm 1 truy vấn
     let query = PlaceModel.find({ status: 'approved' })
       .populate({
         path: 'categories',
@@ -205,7 +207,6 @@ const getPlacesMapdata = async (queryParams = {}) => {
     }
 
     const places = await query
-    const total = await PlaceModel.countDocuments({ status: 'approved' })
 
     const returnPlaces = {
       places
@@ -241,7 +242,7 @@ const getAllPlaces = async (queryParams = {}) => {
     if (queryParams.name) {
       const nameQuery = queryParams.name.toString().trim()
       if (nameQuery) {
-        matchConditions.name = { $regex: nameQuery, $options: 'i' }
+        matchConditions.name = buildDiacriticRegex(nameQuery)
       }
     }
 
@@ -307,10 +308,12 @@ const getPlaceDetails = async (placeId) => {
       .populate({ path: 'ward', select: 'name' })
       .populate({ path: 'createdBy', select: '_id firstName lastName avatar' }) // ← THÊM DÒNG NÀY
       .select(
-        'categories status name slug description address district ward location avgRating totalRatings totalLikes likeBy images viewCount services createdBy' // ← THÊM createdBy VÀO ĐÂY
+        'categories status name slug description address district ward location avgRating totalRatings totalLikes likeBy images viewCount services createdBy'
       );
 
-
+    if (!place) {
+      throw new ApiError(StatusCodes.NOT_FOUND, 'Không tìm thấy địa điểm')
+    }
 
     // Lấy danh sách đánh giá
     const allReviews = await ReviewModel.find({ placeId: place._id, _hidden: false })
@@ -321,6 +324,7 @@ const getPlaceDetails = async (placeId) => {
       })
       .select('comment rating createdAt')
       .sort({ createdAt: -1 })
+      .lean()
     const validReviews = allReviews.filter(review => review.userId !== null)
     return {
       ...place.toObject(),
@@ -625,11 +629,13 @@ const getUserCheckins = async (userId) => {
 };
 
 
+// Tìm kiếm không phân biệt dấu/hoa thường: "banh mi" và "bánh mì" cho cùng kết quả.
+// Dùng buildDiacriticRegex (đã escape ký tự đặc biệt) thay vì nhét thẳng chuỗi người dùng vào $regex.
 const searchPlaces = async (filterCriteria) => {
   try {
     const query = {}
     if (filterCriteria.query) {
-      query.name = { $regex: filterCriteria.query, $options: 'i' } // Case-insensitive search
+      query.name = buildDiacriticRegex(filterCriteria.query.toString().trim())
     }
     if (filterCriteria.category) {
       const category = await CategoryModel.findOne({ $or: [{ slug: filterCriteria.category }, { _id: filterCriteria.category }] }).select('_id')
@@ -638,13 +644,13 @@ const searchPlaces = async (filterCriteria) => {
       }
     }
     if (filterCriteria.address) {
-      query.address = { $regex: filterCriteria.address, $options: 'i' } // Case-insensitive search
+      query.address = buildDiacriticRegex(filterCriteria.address.toString().trim())
     }
     if (filterCriteria.district) {
-      query.district = { $regex: filterCriteria.district, $options: 'i' } // Case-insensitive search
+      query.district = buildDiacriticRegex(filterCriteria.district.toString().trim())
     }
     if (filterCriteria.ward) {
-      const wards = await WardModel.find({ name: { $regex: filterCriteria.ward, $options: 'i' } }).select('_id')
+      const wards = await WardModel.find({ name: buildDiacriticRegex(filterCriteria.ward.toString().trim()) }).select('_id')
       if (wards.length > 0) {
         query.ward = { $in: wards.map(w => w._id) }
       } else {
@@ -657,13 +663,20 @@ const searchPlaces = async (filterCriteria) => {
     if (filterCriteria.totalRatings) {
       query.totalRatings = { $gte: parseInt(filterCriteria.totalRatings) } // Minimum total ratings
     }
+    // limit tuỳ chọn (gợi ý tìm kiếm chỉ cần vài kết quả); tối đa 50 như trước
+    const requestedLimit = parseInt(filterCriteria.limit, 10)
+    const limit = Number.isNaN(requestedLimit) || requestedLimit <= 0 ? 50 : Math.min(requestedLimit, 50)
     const places = await PlaceModel.find({ ...query, status: 'approved' })
       .populate({
         path: 'categories',
         select: 'name icon'
       })
-      .select('name slug address avgRating totalRatings categories location images')
-      .limit(50) // Limit results for performance
+      .populate({
+        path: 'ward',
+        select: 'name'
+      })
+      .select('name slug address district ward avgRating totalRatings categories location images')
+      .limit(limit) // Limit results for performance
     return places
   } catch (error) {
     throw error

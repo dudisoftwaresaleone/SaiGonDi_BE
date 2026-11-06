@@ -57,6 +57,9 @@ const blogCommentSchema = new mongoose.Schema(
   }
 )
 
+// Mọi truy vấn bình luận đều lọc theo blogId (đếm/phân trang) - thiếu index này sẽ quét cả collection
+blogCommentSchema.index({ blogId: 1, createdAt: -1 })
+
 const BlogCommentModel = mongoose.model('blog_comments', blogCommentSchema)
 
 export default BlogCommentModel
